@@ -1,14 +1,12 @@
 <script>
-    import { datalaag } from "$lib/stores.js";
-    import { theme } from "$lib/stores.js";
-    import { country } from "$lib/stores.js";
+    import { datalaag, theme, country } from "$lib/stores.js";
 
     function handleClickTheme(event) {
 		$theme = event.target.id 
         let selectedTheme = document.getElementById($theme)
         let prevTheme = document.querySelector('.active')
         if(prevTheme) {
-        prevTheme.classList.remove('active');
+            prevTheme.classList.remove('active');
         }
         selectedTheme.classList.add('active');
     }
@@ -25,12 +23,12 @@
 
     let themeSentence = 'Het wordt heter';
 	$: if($theme === 'heter'){
-		themeSentence= 'Het wordt heter'}
-	else if($theme=== 'droger'){
-		themeSentence= 'Het wordt droger'}
-    else if($theme=== 'wind'){
-		themeSentence= 'Er komt meer wind'}
-	else{themeSentence= 'De zeespiegel stijgt'}
+		themeSentence = 'Het wordt heter'}
+	else if($theme === 'droger'){
+		themeSentence = 'Het wordt droger'}
+    else if($theme === 'wind'){
+		themeSentence = 'Er komt meer wind'}
+	else{themeSentence = 'De zeespiegel stijgt'}
 
     const optionsHeter = ['Gemiddelde temperatuur', 'Gemiddelde temperatuur droog seizoen', 'Gemiddelde temperatuur nat seizoen']
     const optionsDroger = ['Gemiddelde neerslag', 'Gemiddelde neerslag droog seizoen', 'Gemiddelde neerslag nat seizoen']
@@ -39,9 +37,9 @@
     let themeOptions = optionsHeter
     $: if($theme === 'heter'){
 		themeOptions = optionsHeter}
-	else if($theme=== 'droger'){
+	else if($theme === 'droger'){
 		themeOptions = optionsDroger}
-    else if($theme=== 'wind'){
+    else if($theme === 'wind'){
 		themeOptions = optionsWind}
 	else{themeOptions = []}
     

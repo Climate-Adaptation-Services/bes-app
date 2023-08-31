@@ -3,8 +3,8 @@
   import { datalaag } from "$lib/stores.js";
   import { theme } from "$lib/stores.js";
   import { onMount } from 'svelte'
-  import { dsv } from 'd3';
-  
+  import Colorlegend from './Colorlegend.svelte';
+
   export let data
 
   let screenHeight
@@ -36,9 +36,9 @@
   $: yScale = d3.scaleLinear()
 		  .domain(yDomain)
 	    .range([0.5*screenHeight, 0])
-		  .nice() 
+		  .nice()
 
-  
+
   $: filteredData = data.data.filter(function(x) { return x.variabel === $datalaag})
 
   $: console.log('hoi', data.data)
@@ -48,7 +48,7 @@
   const colorsMin = ['#635F5D', '#E6842A', '#E6842A']
 
   const colorsLegend = ['#F6B656', '#E6842A',  '#635F5D']
-  
+
   let maxData
   let minData
 
@@ -153,16 +153,16 @@
           width={0.05*screenWidth}
           height = {0.03*screenHeight}
           fill={colorsLegend[i]}
-        />  
+        />
         <text
         transform = {`translate (${0.025*screenWidth}, ${(i*0.034*screenHeight) + (0.017*screenHeight)})`}
         class="legendtext"
         text-anchor= 'middle'
-        fill = 'white'        
+        fill = 'white'
         >
         {d}
         </text>
-        {/each}  
+        {/each}
       </g>
     </g>
   </svg>
@@ -179,7 +179,7 @@
   .graphtext{
     text-align:center;
     font-size:2vh;
-  }  
+  }
 
   .legendtext{
     dominant-baseline: middle;
