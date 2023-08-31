@@ -1,12 +1,9 @@
 <script>
-	import { dsv } from 'd3'
-	import { w,h } from "$lib/stores.js";
+	import { w, h, datalaag, country, theme } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
-    import Sidepanel from "$lib/components/Sidepanel.svelte"
+  import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
-	import { datalaag } from "$lib/stores.js";
-    import { country } from "$lib/stores.js";
-    
+  import EmbedZST from "$lib/components/EmbedZST.svelte";
 	
 	export let data
 
@@ -22,10 +19,16 @@
 		<div class='chart-container'>
 			<p class='chart-title'>{$datalaag + ' op ' + $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
-			{#if data}	
-				<div class='chart'>
-					<Chart {data}/>
-				</div>
+			{#if data}
+				{#if $theme === 'zst'}
+					<div class='chart'>
+						<EmbedZST />
+					</div>
+				{:else}
+					<div class='chart'>
+						<Chart {data}/>
+					</div>
+				{/if}
 			{/if}
 		</div>		
 		<div class='explanation-container'>

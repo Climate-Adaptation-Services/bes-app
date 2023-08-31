@@ -3,7 +3,6 @@
   import { datalaag } from "$lib/stores.js";
   import { onMount } from 'svelte'
   import Colorlegend from './Colorlegend.svelte';
-  import { dsv } from 'd3';
   
   export let data
 
