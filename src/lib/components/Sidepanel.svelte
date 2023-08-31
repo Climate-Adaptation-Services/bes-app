@@ -23,12 +23,12 @@
 
     let themeSentence = 'Het wordt heter';
 	$: if($theme === 'heter'){
-		themeSentence= 'Het wordt heter'}
-	else if($theme=== 'droger'){
-		themeSentence= 'Het wordt droger'}
-    else if($theme=== 'wind'){
-		themeSentence= 'Er komt meer wind'}
-	else{themeSentence= 'De zeespiegel stijgt'}
+		themeSentence = 'Het wordt heter'}
+	else if($theme === 'droger'){
+		themeSentence = 'Het wordt droger'}
+    else if($theme === 'wind'){
+		themeSentence = 'Er komt meer wind'}
+	else{themeSentence = 'De zeespiegel stijgt'}
 
     const optionsHeter = ['Gemiddelde temperatuur', 'Gemiddelde temperatuur droog seizoen', 'Gemiddelde temperatuur nat seizoen']
     const optionsDroger = ['Gemiddelde neerslag', 'Gemiddelde neerslag droog seizoen', 'Gemiddelde neerslag nat seizoen']
@@ -37,9 +37,9 @@
     let themeOptions = optionsHeter
     $: if($theme === 'heter'){
 		themeOptions = optionsHeter}
-	else if($theme=== 'droger'){
+	else if($theme === 'droger'){
 		themeOptions = optionsDroger}
-    else if($theme=== 'wind'){
+    else if($theme === 'wind'){
 		themeOptions = optionsWind}
 	else{themeOptions = []}
 
