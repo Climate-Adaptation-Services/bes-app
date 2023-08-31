@@ -7,10 +7,7 @@
 	import { datalaag } from "$lib/stores.js";
     import { country } from "$lib/stores.js";
     
-	
 	export let data
-
-	$: console.log(data.data)
 
 </script>
 

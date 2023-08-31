@@ -5,7 +5,7 @@
 
     function handleClickTheme(event) {
 		$theme = event.target.id 
-        let selectedTheme = document.getElementById($theme)      
+        let selectedTheme = document.getElementById($theme)
         let prevTheme = document.querySelector('.active')
         if(prevTheme) {
         prevTheme.classList.remove('active');
@@ -44,6 +44,12 @@
     else if($theme=== 'wind'){
 		themeOptions = optionsWind}
 	else{themeOptions = []}
+    
+    let defaultTheme
+    $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
+     $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
+    ($datalaag = 'Gemiddelde neerslag');
+
 
 </script>
 
@@ -68,8 +74,8 @@
     {/each}
 
     <h2>Op:</h2>
-    <img class = 'countrylogo bo activecountry' id = 'bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire.png" on:click={handleClickCountry}> 
-    <img class = 'countrylogo se' id = 'st.eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/s%26e.png" on:click={handleClickCountry}> 
+    <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire.png" on:click={handleClickCountry}> 
+    <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/s%26e.png" on:click={handleClickCountry}> 
   
 </section>
 

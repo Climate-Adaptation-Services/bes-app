@@ -1,8 +1,8 @@
 <script>
   import * as d3 from "d3";
   import { datalaag } from "$lib/stores.js";
+  import { theme } from "$lib/stores.js";
   import { onMount } from 'svelte'
-  import Colorlegend from './Colorlegend.svelte';
   import { dsv } from 'd3';
   
   export let data
@@ -17,20 +17,31 @@
     screenWidth = document.documentElement.clientWidth
   })
 
+  let yDomain = [20,31]
+  let unit = " °C"
+
+  $: $theme === 'heter' ? (yDomain = [20,31]):
+     $theme === 'wind' ? (yDomain = [6,10]):
+    (yDomain = [0,600]);
+
+  $: $theme === 'heter' ? (unit = " °C"):
+    $theme === 'wind' ? (unit = " m/s"):
+    (unit = " mm");
+
   $: xScale = d3.scaleBand()
       .domain(maxData.map(xValue))
       .range([0, 0.4*screenWidth])
       .paddingInner(0.25)
 
   $: yScale = d3.scaleLinear()
-		  .domain([20,31])
+		  .domain(yDomain)
 	    .range([0.5*screenHeight, 0])
 		  .nice() 
 
   
   $: filteredData = data.data.filter(function(x) { return x.variabel === $datalaag})
 
-  $: console.log('hoi', filteredData[0]['huidig'])
+  $: console.log('hoi', data.data)
 
   const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
 
@@ -104,7 +115,7 @@
 					y={yScale(yValue(d)) + 0.02*screenHeight}
 					fill='white'
 		    >
-		      {yValue(d) + " °C"}
+		      {yValue(d) + unit}
 		    </text>
       {/each}
       {#each minData as d,i}
@@ -123,7 +134,7 @@
 					y={yScale(yValue(d)) + 0.02*screenHeight}
 					fill='white'
 		    >
-		      {yValue(d) + " °C"}
+		      {yValue(d) + unit}
 		    </text>
       {/each}
       <g class='legend' transform={`translate(${0.45*screenWidth}, ${0*screenHeight})`}>

@@ -7,6 +7,6 @@ export const datalaag = writable('Gemiddelde temperatuur');
 
 export const theme = writable('heter')
 
-export const country = writable('bonaire')
+export const country = writable('Bonaire')
 
 export const csvData = writable(null)
