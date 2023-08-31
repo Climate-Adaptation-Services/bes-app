@@ -6,7 +6,7 @@
         let selectedTheme = document.getElementById($theme)      
         let prevTheme = document.querySelector('.active')
         if(prevTheme) {
-        prevTheme.classList.remove('active');
+            prevTheme.classList.remove('active');
         }
         selectedTheme.classList.add('active');
     }
