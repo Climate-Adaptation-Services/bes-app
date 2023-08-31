@@ -1,7 +1,5 @@
 <script>
-    import { datalaag } from "$lib/stores.js";
-    import { theme } from "$lib/stores.js";
-    import { country } from "$lib/stores.js";
+    import { datalaag, theme, country } from "$lib/stores.js";
 
     function handleClickTheme(event) {
 		$theme = event.target.id 
