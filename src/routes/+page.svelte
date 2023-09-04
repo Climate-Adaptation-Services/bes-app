@@ -10,7 +10,7 @@
 
 	let dataCountry;
 	$: $country === 'Bonaire' 
-		? (dataCountry = data.data)
+		? (dataCountry = data.bonaire_klimaatdata)
 		: (dataCountry = data.sabast_klimaatdata);
 
 </script>
@@ -23,7 +23,7 @@
 		<div class='chart-container'>
 			<p class='chart-title'>{$datalaag + ' op ' + $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
-			{#if data}
+			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
 					{#if $theme === 'zst'}
 							<Zeespiegelstijging {data} />
