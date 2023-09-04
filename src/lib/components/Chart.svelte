@@ -27,7 +27,7 @@
 		  .nice() 
 
   
-  $: filteredData = data.data.filter(function(x) { return x.variabel === $datalaag})
+  $: filteredData = data.filter(function(x) { return x.variabel === $datalaag})
 
   $: console.log('hoi', filteredData[0]['huidig'])
 

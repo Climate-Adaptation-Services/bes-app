@@ -3,15 +3,15 @@
 	import Chart from "$lib/components/Chart.svelte"
   import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
-  import EmbedZST from "$lib/components/EmbedZST.svelte";
+  import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
 	
 	export let data
 
-	$: console.log(data.data)
+	$: console.log(data)
 
 </script>
 
-<div class='App' bind:clientWidth={$w} bind:clientHeight={$h}>
+<div class='App'>
 	<div class='sidepanel'>
 		<Sidepanel/>
 	</div>
@@ -20,15 +20,13 @@
 			<p class='chart-title'>{$datalaag + ' op ' + $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data}
-				{#if $theme === 'zst'}
-					<div class='chart'>
-						<EmbedZST />
-					</div>
-				{:else}
-					<div class='chart'>
-						<Chart {data}/>
-					</div>
-				{/if}
+				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
+					{#if $theme === 'zst'}
+							<Zeespiegelstijging {data} />
+					{:else}
+							<Chart data={data.bonaire_klimaatdata}/>
+					{/if}
+				</div>
 			{/if}
 		</div>		
 		<div class='explanation-container'>
@@ -44,6 +42,14 @@
 		height:100%;
 		background: whitesmoke;
 		display:flex;
+	}
+
+	.chart-container{
+		height:100%;
+	}
+
+	.chart{
+		height:100%;
 	}
 
 	.sidepanel{

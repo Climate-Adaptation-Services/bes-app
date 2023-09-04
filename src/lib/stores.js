@@ -10,3 +10,5 @@ export const theme = writable('heter')
 export const country = writable('bonaire')
 
 export const csvData = writable(null)
+
+export const hoveredYear = writable(null)
