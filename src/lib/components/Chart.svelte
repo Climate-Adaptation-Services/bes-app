@@ -97,7 +97,7 @@
           transform = {`translate (${i*0.15*screenWidth}, ${yScale(yValue(d))})`}
           key={xValue(d.data)}
           width={xScale.bandwidth()}
-          height = {Math.abs(yScale(yValue(d)) - yScale(15))}
+          height = {Math.abs(yScale(yValue(d)) - yScale(yDomain[0]))}
           fill={colorsMax[i]}
         />
         <text
@@ -124,7 +124,7 @@
           transform = {`translate (${i*0.15*screenWidth}, ${yScale(yValue(d))})`}
           key={xValue(d)}
           width={xScale.bandwidth()}
-          height = {Math.abs(yScale(yValue(d)) - yScale(15))}
+          height = {Math.abs(yScale(yValue(d)) - yScale(yDomain[0]))}
           fill={colorsMin[i]}
         />
         <text
