@@ -3,7 +3,7 @@
   import { datalaag } from "$lib/stores.js";
   import { theme } from "$lib/stores.js";
   import { onMount } from 'svelte'
-  import Colorlegend from './Colorlegend.svelte';
+
 
   export let dataCountry
 
@@ -11,7 +11,6 @@
   let screenWidth
   let filteredData
 
-  $: console.log($datalaag)
 
   onMount(() => {
     screenHeight = document.documentElement.clientHeight
