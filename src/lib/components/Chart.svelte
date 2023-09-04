@@ -3,8 +3,7 @@
   import { datalaag } from "$lib/stores.js";
   import { theme } from "$lib/stores.js";
   import { onMount } from 'svelte'
-
-
+  
   export let dataCountry
 
   let screenHeight
@@ -38,10 +37,9 @@
 	    .range([0.5*screenHeight, 0])
 		  .nice()
 
-
   $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
 
-
+  $: console.log('hi', filteredData[0])
   const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
 
   const colorsMin = ['#635F5D', '#E6842A', '#E6842A']
