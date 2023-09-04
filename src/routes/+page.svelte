@@ -3,11 +3,15 @@
 	import Chart from "$lib/components/Chart.svelte"
   import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
-  import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
+
+	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
 	
 	export let data
 
-	$: console.log(data)
+	let dataCountry;
+	$: $country === 'Bonaire' 
+		? (dataCountry = data.data)
+		: (dataCountry = data.sabast_klimaatdata);
 
 </script>
 
@@ -24,16 +28,16 @@
 					{#if $theme === 'zst'}
 							<Zeespiegelstijging {data} />
 					{:else}
-							<Chart data={data.bonaire_klimaatdata}/>
+							<Chart {dataCountry}/>
 					{/if}
 				</div>
 			{/if}
-		</div>		
+		</div>
 		<div class='explanation-container'>
 			<!-- <p class='explanation_title'>Toelichting</p> -->
 			<Explanation/>
 		</div>
-	</div> 
+	</div>
 </div>
 
 <style>
@@ -97,5 +101,5 @@
 		font-size:2vh;
 	}
 
-	
+
 </style>

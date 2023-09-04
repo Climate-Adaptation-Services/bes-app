@@ -1,10 +1,10 @@
 <script>
   import * as d3 from "d3";
   import { datalaag } from "$lib/stores.js";
+  import { theme } from "$lib/stores.js";
   import { onMount } from 'svelte'
-  import Colorlegend from './Colorlegend.svelte';
   
-  export let data
+  export let dataCountry
 
   let screenHeight
   let screenWidth
@@ -16,27 +16,35 @@
     screenWidth = document.documentElement.clientWidth
   })
 
+  let yDomain = [20,31]
+  let unit = " °C"
+
+  $: $theme === 'heter' ? (yDomain = [20,33]):
+     $theme === 'wind' ? (yDomain = [6,9]):
+    (yDomain = [0,600]);
+
+  $: $theme === 'heter' ? (unit = " °C"):
+    $theme === 'wind' ? (unit = " m/s"):
+    (unit = " mm");
+
   $: xScale = d3.scaleBand()
       .domain(maxData.map(xValue))
       .range([0, 0.4*screenWidth])
       .paddingInner(0.25)
 
   $: yScale = d3.scaleLinear()
-		  .domain([20,31])
+		  .domain(yDomain)
 	    .range([0.5*screenHeight, 0])
-		  .nice() 
+		  .nice()
 
-  
-  $: filteredData = data.filter(function(x) { return x.variabel === $datalaag})
-
-  $: console.log('hoi', filteredData[0]['huidig'])
+  $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
 
   const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
 
   const colorsMin = ['#635F5D', '#E6842A', '#E6842A']
 
   const colorsLegend = ['#F6B656', '#E6842A',  '#635F5D']
-  
+
   let maxData
   let minData
 
@@ -74,6 +82,18 @@
   let yValue= ''
   $: yValue = d => d['data']
 
+  // $: onMount(() => {
+	// 		// d3.selectAll('.' + mark_max)
+	// 		// 		.data(data)
+	// 		// 		.transition().duration(2000)
+	// 		// 		.attr("transform", transform($datalaag))
+
+	// 		d3.selectAll('.' + 'mark_maxrect')
+	// 				.data(filteredData)
+	// 				.transition().duration(2000)
+	// 				.attr("height", Math.abs(yScale(yValue(d)) - yScale(yDomain[0])))
+	// 	})
+
 </script>
 
 <section>
@@ -85,7 +105,7 @@
           transform = {`translate (${i*0.15*screenWidth}, ${yScale(yValue(d))})`}
           key={xValue(d.data)}
           width={xScale.bandwidth()}
-          height = {Math.abs(yScale(yValue(d)) - yScale(15))}
+          height = {Math.abs(yScale(yValue(d)) - yScale(yDomain[0]))}
           fill={colorsMax[i]}
         />
         <text
@@ -103,7 +123,7 @@
 					y={yScale(yValue(d)) + 0.02*screenHeight}
 					fill='white'
 		    >
-		      {yValue(d) + " °C"}
+		      {yValue(d) + unit}
 		    </text>
       {/each}
       {#each minData as d,i}
@@ -112,7 +132,7 @@
           transform = {`translate (${i*0.15*screenWidth}, ${yScale(yValue(d))})`}
           key={xValue(d)}
           width={xScale.bandwidth()}
-          height = {Math.abs(yScale(yValue(d)) - yScale(15))}
+          height = {Math.abs(yScale(yValue(d)) - yScale(yDomain[0]))}
           fill={colorsMin[i]}
         />
         <text
@@ -122,7 +142,7 @@
 					y={yScale(yValue(d)) + 0.02*screenHeight}
 					fill='white'
 		    >
-		      {yValue(d) + " °C"}
+		      {yValue(d) + unit}
 		    </text>
       {/each}
       <g class='legend' transform={`translate(${0.45*screenWidth}, ${0*screenHeight})`}>
@@ -141,16 +161,16 @@
           width={0.05*screenWidth}
           height = {0.03*screenHeight}
           fill={colorsLegend[i]}
-        />  
+        />
         <text
         transform = {`translate (${0.025*screenWidth}, ${(i*0.034*screenHeight) + (0.017*screenHeight)})`}
         class="legendtext"
         text-anchor= 'middle'
-        fill = 'white'        
+        fill = 'white'
         >
         {d}
         </text>
-        {/each}  
+        {/each}
       </g>
     </g>
   </svg>
@@ -167,7 +187,7 @@
   .graphtext{
     text-align:center;
     font-size:2vh;
-  }  
+  }
 
   .legendtext{
     dominant-baseline: middle;
