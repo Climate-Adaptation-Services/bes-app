@@ -39,7 +39,6 @@
 
   $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
 
-  $: console.log('hi', filteredData[0])
   const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
 
   const colorsMin = ['#635F5D', '#E6842A', '#E6842A']
@@ -82,6 +81,18 @@
 
   let yValue= ''
   $: yValue = d => d['data']
+
+  // $: onMount(() => {
+	// 		// d3.selectAll('.' + mark_max)
+	// 		// 		.data(data)
+	// 		// 		.transition().duration(2000)
+	// 		// 		.attr("transform", transform($datalaag))
+
+	// 		d3.selectAll('.' + 'mark_maxrect')
+	// 				.data(filteredData)
+	// 				.transition().duration(2000)
+	// 				.attr("height", Math.abs(yScale(yValue(d)) - yScale(yDomain[0])))
+	// 	})
 
 </script>
 
