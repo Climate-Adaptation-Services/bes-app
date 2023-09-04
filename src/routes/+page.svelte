@@ -1,11 +1,17 @@
 <script>
 	import { w, h, datalaag, country, theme } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
-  import Sidepanel from "$lib/components/Sidepanel.svelte"
+  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
-  import EmbedZST from "$lib/components/EmbedZST.svelte";
+  	import EmbedZST from "$lib/components/EmbedZST.svelte";
 
 	export let data
+
+	let dataCountry
+	$: $country === 'Bonaire' ? (dataCountry = data.data):
+    (dataCountry = data.datass);
+
+	$: console.log('test',dataCountry)
 
 </script>
 
@@ -24,7 +30,7 @@
 					</div>
 				{:else}
 					<div class='chart'>
-						<Chart {data}/>
+						<Chart {dataCountry}/>
 					</div>
 				{/if}
 			{/if}

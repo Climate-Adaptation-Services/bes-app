@@ -5,7 +5,7 @@
   import { onMount } from 'svelte'
   import Colorlegend from './Colorlegend.svelte';
 
-  export let data
+  export let dataCountry
 
   let screenHeight
   let screenWidth
@@ -20,8 +20,8 @@
   let yDomain = [20,31]
   let unit = " °C"
 
-  $: $theme === 'heter' ? (yDomain = [20,31]):
-     $theme === 'wind' ? (yDomain = [6,10]):
+  $: $theme === 'heter' ? (yDomain = [20,33]):
+     $theme === 'wind' ? (yDomain = [6,9]):
     (yDomain = [0,600]);
 
   $: $theme === 'heter' ? (unit = " °C"):
@@ -39,9 +39,8 @@
 		  .nice()
 
 
-  $: filteredData = data.data.filter(function(x) { return x.variabel === $datalaag})
+  $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
 
-  $: console.log('hoi', data.data)
 
   const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
 
