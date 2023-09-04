@@ -43,7 +43,6 @@
 		themeOptions = optionsWind}
 	else{themeOptions = []}
     
-    let defaultTheme
     $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
      $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
     ($datalaag = 'Gemiddelde neerslag');
@@ -73,8 +72,9 @@
 
     <h2>Op:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire.png" on:click={handleClickCountry}> 
+    <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/s%26e.png" on:click={handleClickCountry}> 
-  
+    <figcaption class = 'countrycaptionse'>st. Eustatius & Saba</figcaption>    
 </section>
 
 <style>
@@ -91,9 +91,25 @@
     }
 
     .countrylogo{
-        margin:1.5vw;
         margin-top:8vh;
+        position: absolute;
+        bottom: 14vh;
     }
+
+    .countrycaptionbo{
+        position: absolute;
+        bottom: 10vh;
+        left: 5vw;
+        text-align:center;
+    }
+
+    .countrycaptionse{
+        position: absolute;
+        bottom: 10vh;
+        left:15vw;
+        text-align:center
+    }
+
 
     .bo{
         height: 13vh;
@@ -102,15 +118,16 @@
 
     .se{
         height: 10vh;
+        left: 14vw;
     }
 
     .themelogo:not(.active) {
         opacity: 0.3;
     }
 
-
     .countrylogo:not(.activecountry) {
         opacity: 0.3;
     }
+
 </style>
   
