@@ -45,7 +45,8 @@
     
     $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
      $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
-    ($datalaag = 'Gemiddelde neerslag');
+     $theme === 'wind' ? ($datalaag = 'Gemiddelde neerslag'):
+     ($datalaag = 'Zeespiegelstijging')
 
 
 </script>

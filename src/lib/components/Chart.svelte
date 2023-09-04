@@ -11,6 +11,7 @@
   let screenWidth
   let filteredData
 
+  $: console.log($datalaag)
 
   onMount(() => {
     screenHeight = document.documentElement.clientHeight
