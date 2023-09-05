@@ -8,6 +8,7 @@
   export let xScale;
   export let yScale;
   export let className;
+  export let margin;
 
   console.log('test1', data)
 
@@ -32,7 +33,7 @@
     fill="none"
   />
   <text
-    x={5}
+    x={margin.left + 5}
     y={yScale(data[data.length - 1][variable]) - 40}
     dy="0.33em"
     class="lineChart__lineLabel"
