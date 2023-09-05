@@ -15,8 +15,6 @@
   const dataProjection = data.zeespiegel_projectiedata;
   const dataHistoric = data.zeespiegel_historisch;
   
-  console.log(dataHistoric)
-
   const margin = {bottom:100, top:100, left:100, right:200}
   const innerWidth = $w - margin.left - margin.right
   const innerHeight = $h - margin.top - margin.bottom
@@ -119,7 +117,7 @@
 
   <path d="M{margin.left + 50},{yScale(dataHistoric[parseInt(dataHistoric.length/2)]['Stijging'])-44} l0,32" stroke='black' fill='none' stroke-width='0.8' stroke-dasharray="5,2"/>
 
-  <ZeespiegelHover dataProjection={dataProjection} dataHistoric={dataHistoric} linesData={median_lines} xScale={xScale} yScale={yScale} height={innerHeight} areaOpacity={areaOpacity}/>
+  <ZeespiegelHover dataProjection={dataProjection} dataHistoric={dataHistoric} linesData={median_lines} xScale={xScale} yScale={yScale} height={innerHeight} areaOpacity={areaOpacity} {margin}/>
 
 </svg>
 

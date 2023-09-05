@@ -8,29 +8,32 @@
   export let yScale
   export let height
   export let areaOpacity
+  export let margin
 
   import { hoveredYear } from '$lib/stores';
 
   const hoverBarWidth = xScale(dataProjection[1].year) - xScale(dataProjection[0].year);
 
-  let meanHistoric = dataHistoric.reduce((accumulator, d) => {
+  $: meanHistoric = dataHistoric.reduce((accumulator, d) => {
     if (d.year > $hoveredYear && d.year < $hoveredYear + 1) {
-      return [accumulator[0] + d.value, accumulator[1] + 1]
+      return [accumulator[0] + +d['Stijging'], accumulator[1] + 1]
     } else {
       return accumulator
     }
   }, [0, 0])
-  meanHistoric = Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100;
+  // meanHistoric = Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100;
+  
+  $: console.log(meanHistoric)
 
 </script>
 
 
-<g>
+<g class='hover'>
   {#if $hoveredYear !== null}
   <g>
     <!-- {/* Group to show hovered year and value ranges */} -->
     <g
-      transform={`translate(70,35)`}
+      transform={`translate(${margin.left+80},${margin.top+40})`}
       opacity='1'
     >
       <!-- {/* Hovered year */} -->
@@ -38,11 +41,12 @@
         x='20'
         y='0'
         class='legendYear'
+        font-size='18'
       >{$hoveredYear}</text>
 
       <!-- {/* Value ranges */} -->
       {#each linesData as d, i}
-        <g>
+        <g font-size='13'>
           <text
             fill={d.color}
             class='legendCircles'
@@ -59,8 +63,8 @@
       {/each}
 
       <!-- {/* Show the historic value if present, mean for a year */} -->
-      {#if $hoveredYear > d3.max(dataHistoric.map(d => d.year))}
-        <g>
+      {#if $hoveredYear < d3.max(dataHistoric.map(d => d.year))}
+        <g font-size='13'>
           <text
             fill='black'
             class='legendCircles'
@@ -72,7 +76,7 @@
             class='legendCircles'
             x='44'
             y={9 + (linesData.length + 1) * 15}
-          >{meanHistoric + ' cm'}</text>
+          >{Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100 + ' cm'}</text>
         </g>
       {/if}
     </g>
@@ -122,6 +126,7 @@
         </g>
       {/each}
     </g>
+  {/if}
 
   <!-- {/* rects for hovering */} -->
   {#each dataProjection as d,i}
@@ -136,5 +141,4 @@
       on:mouseout={() => hoveredYear.set(null)}
     />
   {/each}
-{/if}
 </g>
