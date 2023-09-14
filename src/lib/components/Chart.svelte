@@ -44,7 +44,20 @@
         data: filteredData[0]['2100_max']
     }]
 
-  let unit = " °C"
+  $: minData = [
+    {
+        scenario:'Huidig',
+        data: filteredData[0]['huidig']
+      },
+    {
+      scenario:'2050',
+      data: filteredData[0]['2050_min']
+    },
+    {
+      scenario:'2100',
+      data: filteredData[0]['2100_min']
+    }]
+
 
   $: yDomain = $theme === 'heter' ? [20,33]:
      $theme === 'wind' ? [6,9]:
@@ -63,25 +76,10 @@
       .range([0, 0.4*screenWidth])
       .paddingInner(0.25)
 
-  
   $: yScale = d3.scaleLinear()
 		  .domain(yDomain)
 	    .range([0.5*screenHeight, 0])
 		  .nice()
-
-  $: minData = [
-    {
-        scenario:'Huidig',
-        data: filteredData[0]['huidig']
-      },
-    {
-      scenario:'2050',
-      data: filteredData[0]['2050_min']
-    },
-    {
-      scenario:'2100',
-      data: filteredData[0]['2100_min']
-    }]
 
 </script>
 
