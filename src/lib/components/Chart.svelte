@@ -13,7 +13,6 @@
   let screenWidth
   let filteredData
 
-
   onMount(() => {
     screenHeight = document.documentElement.clientHeight
     screenWidth = document.documentElement.clientWidth

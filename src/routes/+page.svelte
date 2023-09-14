@@ -13,6 +13,13 @@
 		? (dataCountry = data.bonaire_klimaatdata)
 		: (dataCountry = data.sabast_klimaatdata);
 
+	// let chartTitle
+	// $: $theme === 'Bonaire' 
+	// 	? (dataCountry = data.bonaire_klimaatdata)
+	// 	: (dataCountry = data.sabast_klimaatdata);
+	
+	// 	console.log($theme)
+
 </script>
 
 <div class='App'>

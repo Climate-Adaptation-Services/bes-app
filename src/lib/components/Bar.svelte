@@ -15,13 +15,13 @@
   export let className   
 
     afterUpdate(() => {
-
+      
     d3.selectAll('.' + className + '_bartext')
         .data(data)
         .transition().duration(2000)
         .attr("y", (d) => yScale(yValue(d)) + 0.015*screenHeight)
-        
-        
+
+          
 		d3.selectAll('.' + className+ '_rect')
                  .data(data)
                  .transition().duration(2000)

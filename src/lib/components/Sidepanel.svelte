@@ -47,6 +47,8 @@
      $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
     ($datalaag = 'Gemiddelde neerslag');
 
+    console.log($theme)
+
 
 </script>
 
@@ -70,7 +72,7 @@
         </label>
     {/each}
 
-    <h2>Op:</h2>
+    <h2>Kies een locatie:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/s%26e.png" on:click={handleClickCountry}> 
