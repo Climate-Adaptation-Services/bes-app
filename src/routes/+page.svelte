@@ -65,7 +65,7 @@
 		flex:1;
 		flex-direction:column;
 		padding-left:3vw;
-		padding-top:20vh;
+		padding-top:15vh;
 		width:20%;
 	}
 

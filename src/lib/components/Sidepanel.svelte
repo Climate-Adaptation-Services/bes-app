@@ -47,13 +47,10 @@
      $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
     ($datalaag = 'Gemiddelde neerslag');
 
-    console.log($theme)
-
-
 </script>
 
 <section>
-    <h2>Kies een thema</h2>
+    <h2>Kies een thema:</h2>
     <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/heter.png" on:click={handleClickTheme}> 
     <img class = 'themelogo droger' id = 'droger' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droger.png" on:click={handleClickTheme}> 
     <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind.png" on:click={handleClickTheme}> 
