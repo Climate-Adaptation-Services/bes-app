@@ -13,12 +13,9 @@
 		? (dataCountry = data.bonaire_klimaatdata)
 		: (dataCountry = data.sabast_klimaatdata);
 
-	// let chartTitle
-	// $: $theme === 'Bonaire' 
-	// 	? (dataCountry = data.bonaire_klimaatdata)
-	// 	: (dataCountry = data.sabast_klimaatdata);
-	
-	// 	console.log($theme)
+	let chartTitle
+	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
+		(chartTitle = String($datalaag));
 
 </script>
 
@@ -28,7 +25,7 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{$datalaag + ' op ' + $country}</p>
+			<p class='chart-title'>{chartTitle + ' op ' + $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
