@@ -23,8 +23,6 @@
   }, [0, 0])
   // meanHistoric = Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100;
   
-  $: console.log(meanHistoric)
-
 </script>
 
 
@@ -33,16 +31,29 @@
   <g>
     <!-- {/* Group to show hovered year and value ranges */} -->
     <g
-      transform={`translate(${margin.left+80},${margin.top+40})`}
+      transform={`translate(${margin.left+60},${margin.top+40})`}
       opacity='1'
     >
       <!-- {/* Hovered year */} -->
       <text
-        x='20'
+        x='50'
         y='0'
         class='legendYear'
-        font-size='18'
+        font-size='20'
       >{$hoveredYear}</text>
+
+      <text
+        x='54'
+        y='30'
+        class='legendYear'
+        font-size='13'
+      >Mediaan</text>
+      <text
+        x='125'
+        y='30'
+        class='legendYear'
+        font-size='13'
+      >Range</text>
 
       <!-- {/* Value ranges */} -->
       {#each linesData as d, i}
@@ -51,13 +62,19 @@
             fill={d.color}
             class='legendCircles'
             x='-26'
-            y={9 + (linesData.length - i) * 15}
+            y={35 + (linesData.length - i) * 15}
           >{d.legendText}</text>
           <text
             fill={d.color}
             class='legendCircles'
-            x='44'
-            y={9 + (linesData.length - i) * 15}
+            x='54'
+            y={35 + (linesData.length - i) * 15}
+          >{Math.round(dataProjection.filter(d2 => d2.year === $hoveredYear)[0][d.median]) + ' cm'}</text>
+          <text
+            fill={d.color}
+            class='legendCircles'
+            x='125'
+            y={35 + (linesData.length - i) * 15}
           >{Math.round(dataProjection.filter(d2 => d2.year === $hoveredYear)[0][d.variableLow]) + ' - ' + Math.round(dataProjection.filter(d => d.year === $hoveredYear)[0][d.variableHigh]) + ' cm'}</text>
         </g>
       {/each}
@@ -132,7 +149,7 @@
   {#each dataProjection as d,i}
     <rect
       width={hoverBarWidth}
-      height={height}
+      height={height+40}
       fill='steelblue'
       x={xScale(dataProjection[i].year) - hoverBarWidth/2}
       y='0'

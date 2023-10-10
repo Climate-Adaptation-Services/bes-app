@@ -66,6 +66,7 @@
 
   const median_lines = [
     {
+      'median':'ssp126_50pc',
       'variableLow': 'ssp126_5pc',
       'variableHigh': 'ssp126_95pc',
       'color': colorGematigd,
@@ -74,6 +75,7 @@
       'legendText2': 'Met gematigde',
       'y_offset_text': ['48', '62']
     }, {
+      'median':'ssp585_50pc',
       'variableLow': 'ssp585_5pc',
       'variableHigh': 'ssp585_95pc',
       'color': colorSterk,
@@ -92,9 +94,12 @@
 
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
+ 
 
   {#each median_lines as median_line}
     <g>
+      <Line data={dataProjection} color={median_line.color} variable={median_line.median} legendText='Median' xScale={xScale} yScale={yScale} className={'median' + median_line.legendText} {margin} />
+
       <Area className='areaChart' data={dataProjection} 
         variable1={median_line.variableLow} variable2={median_line.variableHigh} 
         color={median_line.color} opacity={areaOpacity} xScale={xScale} yScale={yScale} 
@@ -115,7 +120,6 @@
     </g>
   {/each}
 
-  <!-- <Line data={dataHistoric} color='black' variable='Stijging' legendText='Gemeten stijging' xScale={xScale} yScale={yScale} className='gemeten_zeespiegel' {margin} /> -->
 
   <!-- <path d="M{margin.left + 50},{yScale(dataHistoric[parseInt(dataHistoric.length/2)]['Stijging'])-44} l0,32" stroke='black' fill='none' stroke-width='0.8' stroke-dasharray="5,2"/> -->
 

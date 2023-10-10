@@ -32,7 +32,7 @@
     stroke-width='2.2'
     fill="none"
   />
-  <text
+  <!-- <text
     x={margin.left + 5}
     y={yScale(data[data.length - 1][variable]) - 40}
     dy="0.33em"
@@ -40,7 +40,7 @@
     fill={color}
   >
     {legendText}
-  </text>
+  </text> -->
 </g>
 
 <style>
