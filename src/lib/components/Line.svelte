@@ -1,6 +1,6 @@
 <script>
   import * as d3 from 'd3';
-  import { onMount } from 'svelte';
+  import { afterUpdate } from 'svelte';
   export let data;
   export let color;
   export let variable;
@@ -10,9 +10,7 @@
   export let className;
   export let margin;
 
-  console.log('test1', data)
-
-  onMount(() => {
+  afterUpdate(() => {
     d3.select('.' + className)
       .datum(data)
       .attr('d', d3.line()

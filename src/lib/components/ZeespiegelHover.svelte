@@ -2,7 +2,7 @@
   import * as d3 from 'd3';
 
   export let dataProjection
-  export let dataHistoric
+  // export let dataHistoric
   export let linesData
   export let xScale
   export let yScale
@@ -14,13 +14,13 @@
 
   const hoverBarWidth = xScale(dataProjection[1].year) - xScale(dataProjection[0].year);
 
-  $: meanHistoric = dataHistoric.reduce((accumulator, d) => {
-    if (d.year > $hoveredYear && d.year < $hoveredYear + 1) {
-      return [accumulator[0] + +d['Stijging'], accumulator[1] + 1]
-    } else {
-      return accumulator
-    }
-  }, [0, 0])
+  // $: meanHistoric = dataHistoric.reduce((accumulator, d) => {
+  //   if (d.year > $hoveredYear && d.year < $hoveredYear + 1) {
+  //     return [accumulator[0] + +d['Stijging'], accumulator[1] + 1]
+  //   } else {
+  //     return accumulator
+  //   }
+  // }, [0, 0])
   // meanHistoric = Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100;
   
 </script>

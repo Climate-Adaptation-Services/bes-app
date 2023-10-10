@@ -1,7 +1,7 @@
 <script>
 	import { w, h, datalaag, country, theme } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
-  	import Sidepanel from "$lib/components/Sidepanel.svelte"
+  import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
@@ -12,6 +12,10 @@
 	$: $country === 'Bonaire' 
 		? (dataCountry = data.bonaire_klimaatdata)
 		: (dataCountry = data.sabast_klimaatdata);
+
+	$: dataSeaLevelProjection = ($country === 'Bonaire')
+    ? data.zeespiegel_projectiedata_bonaire
+    : data.zeespiegel_projectiedata_saba
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
@@ -30,7 +34,7 @@
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
 					{#if $theme === 'zst'}
-							<Zeespiegelstijging {data} />
+							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} />
 					{:else}
 							<Chart {dataCountry}/>
 					{/if}

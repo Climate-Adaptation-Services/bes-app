@@ -1,7 +1,7 @@
 
 <script>
   import * as d3 from 'd3';
-  import { onMount } from 'svelte';
+  import { afterUpdate } from 'svelte';
   import rough from 'roughjs';
 
   export let data;
@@ -26,7 +26,8 @@
 
   let svgElement;
 
-  onMount(() => {
+  afterUpdate(() => {
+    d3.select('.rough' + className + ' g').remove()
     const rc = rough.svg(svgElement);
 
     const path = rc.path(areaPath(data),
@@ -45,5 +46,5 @@
 
 </script>
 
-<g class='rough' bind:this={svgElement} height={height} width={width}></g>
+<g class={'rough'+className} bind:this={svgElement} height={height} width={width}></g>
 

@@ -7,30 +7,29 @@
   import Area from './Area.svelte'
   import ZeespiegelHover from './ZeespiegelHover.svelte';
 
-  import { w, h } from '$lib/stores';
+  import { w, h, country } from '$lib/stores';
 
-  export let data;
+  export let dataProjection;
+
+  $: console.log(dataProjection)
 
 
-  const dataProjection = data.zeespiegel_projectiedata;
-  const dataHistoric = data.zeespiegel_historisch;
-
-  console.log(dataProjection)
+  // const dataHistoric = data.zeespiegel_historisch;
   
   const margin = {bottom:100, top:100, left:100, right:200}
   const innerWidth = $w - margin.left - margin.right
   const innerHeight = $h - margin.top - margin.bottom
 
-  let xScale = d3
+  $: xScale = d3
     .scaleLinear()
     .domain([
-      dataHistoric[0].year,
+      1995,
       dataProjection[dataProjection.length - 1].year
     ])
     .range([margin.left, innerWidth])
   // .nice()
 
-  var yScale = d3
+  let yScale = d3
     .scaleLinear()
     .domain([
       0,
@@ -44,7 +43,7 @@
     .replace(',', '')
 
   // Add scales to axis
-  const xAxis = d3
+  $: xAxis = d3
     .axisBottom(xScale)
     .ticks(12)
     .tickFormat(xAxisTickFormat);
@@ -100,7 +99,7 @@
     <g>
       <Line data={dataProjection} color={median_line.color} variable={median_line.median} legendText='Median' xScale={xScale} yScale={yScale} className={'median' + median_line.legendText} {margin} />
 
-      <Area className='areaChart' data={dataProjection} 
+      <Area className={'areaChart' + median_line.legendText} data={dataProjection} 
         variable1={median_line.variableLow} variable2={median_line.variableHigh} 
         color={median_line.color} opacity={areaOpacity} xScale={xScale} yScale={yScale} 
         width={innerWidth} height={innerHeight} hachureAngle={median_line.hachureAngle} fillStyle='hachure' 
@@ -123,7 +122,7 @@
 
   <!-- <path d="M{margin.left + 50},{yScale(dataHistoric[parseInt(dataHistoric.length/2)]['Stijging'])-44} l0,32" stroke='black' fill='none' stroke-width='0.8' stroke-dasharray="5,2"/> -->
 
-  <ZeespiegelHover dataProjection={dataProjection} dataHistoric={dataHistoric} linesData={median_lines} xScale={xScale} yScale={yScale} height={innerHeight} areaOpacity={areaOpacity} {margin}/>
+  <ZeespiegelHover dataProjection={dataProjection} linesData={median_lines} xScale={xScale} yScale={yScale} height={innerHeight} areaOpacity={areaOpacity} {margin}/>
 
 </svg>
 
