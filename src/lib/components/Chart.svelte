@@ -1,7 +1,7 @@
 <script>
   import * as d3 from "d3";
   import { datalaag } from "$lib/stores.js";
-  import { theme } from "$lib/stores.js";
+  import { theme, country } from "$lib/stores.js";
   import { onMount, afterUpdate } from 'svelte'
   
   import Bar from './Bar.svelte';
@@ -57,14 +57,23 @@
       data: filteredData[0]['2100_min']
     }]
 
+  $: console.log($country)
+
 
   $: yDomain = $theme === 'heter' ? [20,33]:
      $theme === 'wind' ? [6,9]:
+     $theme === 'droger' & $country === 'st.Eustatius & Saba' ? [0,1100]:
     [0,600];
 
   $: unit = $theme === 'heter' ? " °C":
     $theme === 'wind' ? " m/s":
     " mm"; 
+
+  
+  function tickFormat(value){
+    if ($theme === 'droger') {return d3.format('.0f')(value)}
+    else {return d3.format('.1f')(value)}
+  }
 
   $: xValue = d => d['scenario']
 
@@ -86,8 +95,8 @@
   <svg className='svg_chart' width={0.7*screenWidth} height={0.7*screenHeight} >
     <g className='g_chart' transform={`translate(${0.1*screenWidth},${0.15 * screenHeight})`}>
       {#if screenWidth}
-        <Bar data = {maxData} colors = {colorsMax} {yScale} {xScale} {yValue} {xValue} {screenHeight} {screenWidth} {yDomain} {unit} className = 'mark_max'/>
-        <Bar data = {minData} colors = {colorsMin} {yScale} {xScale} {yValue} {xValue} {screenHeight} {screenWidth} {yDomain} {unit} className = 'mark_min'/>
+        <Bar data = {maxData} colors = {colorsMax} {yScale} {xScale} {yValue} {xValue} {screenHeight} {screenWidth} {yDomain} {unit} {tickFormat} className = 'mark_max'/>
+        <Bar data = {minData} colors = {colorsMin} {yScale} {xScale} {yValue} {xValue} {screenHeight} {screenWidth} {yDomain} {unit} {tickFormat} className = 'mark_min'/>
       {/if}
       <Legend {screenHeight} {screenWidth} {colorsLegend} {xValue}/>
     </g>

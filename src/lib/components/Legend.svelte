@@ -10,6 +10,7 @@
             x={0}
             y={-15}
             class="legendlabel"
+            font-size = '2.2vh'
         >
             {'Legenda'}
         </text>
@@ -23,10 +24,11 @@
             fill={colorsLegend[i]}
         />
         <text
-            transform = {`translate (${0.025*screenWidth}, ${(i*0.034*screenHeight) + (0.017*screenHeight)})`}
+            transform = {`translate (${0.025*screenWidth}, ${(i*0.034*screenHeight) + (0.02*screenHeight)})`}
             class="legendtext"
             text-anchor= 'middle'
             fill = 'white'
+            font-size = '2vh'
         >
         {d}
             </text>

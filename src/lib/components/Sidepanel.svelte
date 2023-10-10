@@ -69,7 +69,7 @@
         </label>
     {/each}
 
-    <h2>Kies een locatie:</h2>
+    <h2 class = 'kieslocatie'>Kies een locatie:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/s%26e.png" on:click={handleClickCountry}> 
@@ -81,7 +81,12 @@
     .keuzes{
         margin-top:1vh;
         font-size: 2vh;
-    }    
+    }   
+
+    .kieslocatie{
+        position: absolute;
+        bottom: 33vh;
+    }
 
     .themelogo{
         width:4vw;
@@ -90,22 +95,25 @@
     }
 
     .countrylogo{
-        margin-top:8vh;
+        margin-top:2vh;
         position: absolute;
-        bottom: 14vh;
+        bottom: 19vh;
+        
     }
 
     .countrycaptionbo{
         position: absolute;
-        bottom: 10vh;
+        bottom: 14vh;
         left: 5vw;
         text-align:center;
+        font-size: 2.3vh;
     }
 
     .countrycaptionse{
         position: absolute;
-        bottom: 10vh;
-        left:15vw;
+        bottom: 14vh;
+        left:14vw;
+        font-size: 2.3vh;
         text-align:center
     }
 
@@ -127,6 +135,10 @@
     .countrylogo:not(.activecountry) {
         opacity: 0.3;
     }
+
+    h2{
+	font-size: 2.6vh;
+}
 
 </style>
   

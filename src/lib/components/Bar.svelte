@@ -13,13 +13,14 @@
   export let unit
   export let yDomain
   export let className   
+  export let tickFormat
 
     afterUpdate(() => {
       
     d3.selectAll('.' + className + '_bartext')
         .data(data)
         .transition().duration(2000)
-        .attr("y", (d) => yScale(yValue(d)) + 0.015*screenHeight)
+        .attr("y", (d) => yScale(yValue(d)) + 0.016*screenHeight)
 
           
 		d3.selectAll('.' + className+ '_rect')
@@ -28,6 +29,8 @@
                  .attr("transform", (d,i) => `translate (${i*0.15*screenWidth}, ${yScale(yValue(d))})`)
                  .attr("height", (d) => Math.abs(yScale(yValue(d)) - yScale(yDomain[0]))) 
 	});
+
+  
 
   </script>
 
@@ -53,10 +56,11 @@
             text-anchor='middle'
             x={(i*0.15*screenWidth + xScale.bandwidth()/2)}
             fill='white'
-            y = {yScale(yDomain[0])}
+            y={yScale(yDomain[0])}
+            font-size = '2vh'
             
           >
-            {yValue(d) + unit}
+            {tickFormat(yValue(d)) + unit}
           </text>
         </g>
     {/each}
