@@ -14,6 +14,8 @@
 
   const dataProjection = data.zeespiegel_projectiedata;
   const dataHistoric = data.zeespiegel_historisch;
+
+  console.log(dataProjection)
   
   const margin = {bottom:100, top:100, left:100, right:200}
   const innerWidth = $w - margin.left - margin.right
@@ -32,7 +34,7 @@
     .scaleLinear()
     .domain([
       0,
-      d3.max(dataProjection.map(d => d.high_95))
+      150
     ])
     .range([innerHeight, margin.top])
     .nice()
@@ -64,16 +66,16 @@
 
   const median_lines = [
     {
-      'variableLow': 'low_05',
-      'variableHigh': 'low_95',
+      'variableLow': 'ssp126_5pc',
+      'variableHigh': 'ssp126_95pc',
       'color': colorGematigd,
       'legendText': 'Gematigd',
       'hachureAngle': '140',
       'legendText2': 'Met gematigde',
       'y_offset_text': ['48', '62']
     }, {
-      'variableLow': 'high_05',
-      'variableHigh': 'high_95',
+      'variableLow': 'ssp585_5pc',
+      'variableHigh': 'ssp585_95pc',
       'color': colorSterk,
       'legendText': 'Sterk',
       'hachureAngle': '60',

@@ -63,7 +63,7 @@
       {/each}
 
       <!-- {/* Show the historic value if present, mean for a year */} -->
-      {#if $hoveredYear < d3.max(dataHistoric.map(d => d.year))}
+      <!-- {#if $hoveredYear < d3.max(dataHistoric.map(d => d.year))}
         <g font-size='13'>
           <text
             fill='black'
@@ -78,7 +78,7 @@
             y={9 + (linesData.length + 1) * 15}
           >{Math.round(meanHistoric[0] / meanHistoric[1] * 100) / 100 + ' cm'}</text>
         </g>
-      {/if}
+      {/if} -->
     </g>
 
     <!-- { /* dashed line to make extra clear what is hovered */ } -->
