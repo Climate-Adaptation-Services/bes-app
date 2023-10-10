@@ -113,9 +113,9 @@
     </g>
   {/each}
 
-  <Line data={dataHistoric} color='black' variable='Stijging' legendText='Gemeten stijging' xScale={xScale} yScale={yScale} className='gemeten_zeespiegel' {margin} />
+  <!-- <Line data={dataHistoric} color='black' variable='Stijging' legendText='Gemeten stijging' xScale={xScale} yScale={yScale} className='gemeten_zeespiegel' {margin} /> -->
 
-  <path d="M{margin.left + 50},{yScale(dataHistoric[parseInt(dataHistoric.length/2)]['Stijging'])-44} l0,32" stroke='black' fill='none' stroke-width='0.8' stroke-dasharray="5,2"/>
+  <!-- <path d="M{margin.left + 50},{yScale(dataHistoric[parseInt(dataHistoric.length/2)]['Stijging'])-44} l0,32" stroke='black' fill='none' stroke-width='0.8' stroke-dasharray="5,2"/> -->
 
   <ZeespiegelHover dataProjection={dataProjection} dataHistoric={dataHistoric} linesData={median_lines} xScale={xScale} yScale={yScale} height={innerHeight} areaOpacity={areaOpacity} {margin}/>
 
