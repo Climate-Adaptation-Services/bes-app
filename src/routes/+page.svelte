@@ -60,6 +60,10 @@
 		height:100%;
 	}
 
+	.chart{
+		height:90%;
+	}
+
 	.sidepanel{
 		display:flex;
 		flex:1;
