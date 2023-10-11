@@ -19,11 +19,13 @@
   $: markslabelposition = $country === 'st.Eustatius & Saba' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
     $country === 'st.Eustatius & Saba' && $theme === 'heter' && className === 'mark_max' ? (-0.01*screenHeight):
     $country === 'st.Eustatius & Saba' && $theme === 'droger' && className === 'mark_max' ? (-0.01*screenHeight):
-    (0.016*screenHeight);
+    $country === 'Bonaire' && $theme === 'heter' && className === 'mark_max' ? (-0.01*screenHeight):
+    (0.02*screenHeight);
 
   $: markTextColor = $country === 'st.Eustatius & Saba' && $theme === 'wind' && className === 'mark_max' ? 'grey':
      $country === 'st.Eustatius & Saba' && $theme === 'heter' && className === 'mark_max' ? 'grey':
      $country === 'st.Eustatius & Saba' && $theme === 'droger' && className === 'mark_max' ? 'grey':
+     $country === 'Bonaire' && $theme === 'heter' && className === 'mark_max' ? 'grey':
     'white'; 
 
   afterUpdate(() => {
