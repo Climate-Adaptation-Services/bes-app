@@ -68,7 +68,7 @@
 		display:flex;
 		flex:1;
 		flex-direction:column;
-		padding-left:3vw;
+		padding-left:2vw;
 		padding-top:15vh;
 		width:20%;
 	}

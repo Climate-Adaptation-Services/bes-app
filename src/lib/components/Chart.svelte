@@ -31,10 +31,6 @@
 
   $: maxData = [
       {
-        scenario:'Huidig',
-        data: filteredData[0]['huidig']
-      },
-      {
         scenario:'2050',
         data: filteredData[0]['2050_max']
       },
@@ -61,7 +57,8 @@
 
 
   $: yDomain = $theme === 'heter' ? [20,33]:
-     $theme === 'wind' ? [6,9]:
+     $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
+     $theme === 'wind' & $country === 'st.Eustatius & Saba' ? [5,8]:
      $theme === 'droger' & $country === 'st.Eustatius & Saba' ? [0,1100]:
     [0,600];
 
@@ -80,7 +77,7 @@
   $: yValue = d => d['data'] 
 
   $: xScale = d3.scaleBand()
-      .domain(maxData.map(xValue))
+      .domain(minData.map(xValue))
       .range([0, 0.4*screenWidth])
       .paddingInner(0.25)
 
