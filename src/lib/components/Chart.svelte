@@ -20,11 +20,11 @@
 
   $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
 
-  const colorsMax = ['#635F5D', '#F6B656', '#F6B656']
+  const colorsMax = ['#E5CDC0', '#E5CDC0']
 
-  const colorsMin = ['#635F5D', '#E6842A', '#E6842A']
+  const colorsMin = ['#5A8A8A', '#E68650', '#E68650']
 
-  const colorsLegend = ['#F6B656', '#E6842A',  '#635F5D']
+  const colorsLegend = ['#E5CDC0', '#E68650',  '#5A8A8A']
 
   let maxData
   let minData
