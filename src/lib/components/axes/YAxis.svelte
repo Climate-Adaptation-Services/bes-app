@@ -1,6 +1,6 @@
 <script>
   import * as d3 from 'd3';
-  import { onMount } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
 
   export let scale;
   export let xTransform;
@@ -8,7 +8,7 @@
   export let className;
   export let axis;
 
-  onMount(() => {
+  afterUpdate(() => {
     d3.select('.' + className).call(axis);
   }, [axis]);
 
