@@ -3,7 +3,7 @@
 
   let Tekst = '';
   $: if($datalaag === 'Gemiddelde temperatuur'){
-		Tekst = "De grafieken tonen de gemiddelde temperatuur (°C) in het huidige klimaat (1981-2010) en voor het klimaat rond 2050 en 2100 (waarden voor het laagste (GL) en hoogste (WH) KNMI’14 klimaatscenario)."
+		Tekst = "De grafieken tonen de gemiddelde temperatuur (°C) in het huidige klimaat (1991-2020), voor het klimaat rond 2050 en 2100 (KNMI 2023 scenario’s). De scenario's geven de bandbreedte weer waarbinnen klimaatverandering zich waarschijnlijk zal ontwikkelen. Deze bandbreedte hangt af van zowel de hoeveelheid broeikasgassen die nog worden uitgestoten en de gevoeligheid van het klimaatsysteem. De ‘laag’ en ‘hoog’ scenarios weerspiegelen de twee meest uiteenlopende scenario's."
   }
 	else if($datalaag === 'Gemiddelde temperatuur droog seizoen'){
 		Tekst = "De grafieken tonen de gemiddelde temperatuur (°C) tijdens het droge seizoen in het huidige klimaat (1981-2010) en voor het klimaat rond 2050 en 2100(waarden voor het laagste (GL) en hoogste (WH) KNMI’14 klimaatscenario)."
