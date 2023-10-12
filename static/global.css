@@ -69,4 +69,7 @@ button:focus {
 	border-color: #666;
 }
 
+.tick text{
+	font-size: 18px;
+}
 

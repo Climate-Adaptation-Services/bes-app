@@ -110,12 +110,12 @@
         width={innerWidth} height={innerHeight} hachureAngle={median_line.hachureAngle} fillStyle='hachure' 
         hachureGap='4'/>
       
-      <text x={innerWidth + 9} y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 48} className='legendText' fill={median_line.color} opacity={areaOpacity + 0.2}>
+      <text class='legendText' x={innerWidth + 9} y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 48} className='legendText' fill={median_line.color} opacity={areaOpacity + 0.2}>
         {median_line.legendText2}
       </text>
       <text 
         x={innerWidth + 9} 
-        y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 62}
+        y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 65}
         class='legendText' 
         fill={median_line.color} 
         opacity={areaOpacity + 0.2}>
@@ -139,7 +139,7 @@
 
   .legendYear {
     font-weight: normal;
-    font-size: 17px;
+    font-size: 27px;
   }
 
   .legendCircles {
@@ -148,7 +148,7 @@
   }
 
   .legendText {
-    font-size: 12px;
+    font-size: 18px;
     font-weight: normal;
   }
 
