@@ -73,18 +73,18 @@
       'variableLow': 'ssp126_5pc',
       'variableHigh': 'ssp126_95pc',
       'color': colorGematigd,
-      'legendText': 'Gematigd',
+      'legendText': 'Low',
       'hachureAngle': '140',
-      'legendText2': 'Met gematigde',
+      'legendText2': 'With low',
       'y_offset_text': ['48', '62']
     }, {
       'median':'ssp585_50pc',
       'variableLow': 'ssp585_5pc',
       'variableHigh': 'ssp585_95pc',
       'color': colorSterk,
-      'legendText': 'Sterk',
+      'legendText': 'High',
       'hachureAngle': '60',
-      'legendText2': 'Met sterke',
+      'legendText2': 'With high',
       'y_offset_text': ['53', '67']
     }
   ]
@@ -115,11 +115,11 @@
       </text>
       <text 
         x={innerWidth + 9} 
-        y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 65}
+        y={yScale(dataProjection[dataProjection.length - 1][median_line.variableHigh]) + 70}
         class='legendText' 
         fill={median_line.color} 
         opacity={areaOpacity + 0.2}>
-        klimaatverandering
+        emissions
       </text>
     </g>
   {/each}
@@ -148,7 +148,7 @@
   }
 
   .legendText {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: normal;
   }
 
