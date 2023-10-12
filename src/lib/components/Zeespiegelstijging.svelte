@@ -60,8 +60,11 @@
     .ticks(5)
     .tickFormat(yAxisTickFormat);
 
-  const colorGematigd = '#009fd1';
-  const colorSterk = 'red';
+  // const colorGematigd = '#009fd1';
+  // const colorSterk = 'red';
+
+  const colorGematigd = '#017676'
+  const colorSterk = '#f44f01'
 
   const median_lines = [
     {
