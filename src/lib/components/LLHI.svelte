@@ -12,14 +12,15 @@
 
   import { annotation } from 'd3-svg-annotation';
 
+  // console.log(annotationXYThreshold)
   const annotations = [
     {
       note: {
-        label: "Low-likelihood-high-impact",
+        label: "Schatting voor hoogst mogelijke zeespiegelstijging",
         // title: "Annotation title"
       },
-      data: {'year': 2060, variable:'130.26'},
-      dy: 30,
+      data: {'year': 2057, variable:'112.26'},
+      dy: 20,
       dx: 50
     }
   ]
@@ -29,15 +30,23 @@
       x: d => xScale(d.year),
       y: d => yScale(d.variable)
     })
+    .accessorsInverse({
+      date: d => xScale.invert(d.year),
+      close: d => yScale.invert(d.variable)
+    })
     .annotations(annotations)
 
-  afterUpdate(() => {
+  onMount(() => {
     d3.select("." + className + 'g')
     .append("g")
     .call(makeAnnotations)
+  })
+
+  afterUpdate(() => {
+    makeAnnotations.updatedAccessors()
     
     d3.select('.' + className + 'path')
-      .datum(data)
+      .datum(data.slice(0,58))
       .attr('d', d3.line()
         .x(d => xScale(d.year))
         .y(function(d) {
@@ -50,12 +59,13 @@
   });
 </script>
 
-<g class={className + 'g'}>
+<g class={className + 'g'} text-anchor='start'>
   <path
     class={className + 'path'}
     stroke={color}
-    stroke-width='2.2'
+    stroke-width='1'
     fill="none"
+    stroke-dasharray="8 4"
   />
 </g>
 
@@ -63,5 +73,9 @@
   .lineChart__lineLabel{
     font-size:11px;
     font-weight:normal;
+  }
+
+  g{
+    font-size: 14px;
   }
 </style>
