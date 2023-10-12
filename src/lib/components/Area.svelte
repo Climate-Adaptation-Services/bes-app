@@ -32,7 +32,7 @@
 
     const path = rc.path(areaPath(data),
       { 
-        roughness: 0.5, 
+        roughness: 0.3, 
         fill: color, 
         stroke:'none',
         fillStyle:fillStyle,
