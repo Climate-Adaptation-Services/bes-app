@@ -17,6 +17,10 @@
     ? data.zeespiegel_projectiedata_bonaire
     : data.zeespiegel_projectiedata_saba
 
+	$: dataSeaLevelProjectionLLHI = ($country === 'Bonaire')
+    ? data.zeespiegel_projectiedata_bonaire_llhi
+    : data.zeespiegel_projectiedata_bonaire_llhi
+
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
 		(chartTitle = String($datalaag));
@@ -34,7 +38,7 @@
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
 					{#if $h > 0 && $theme === 'zst'}
-							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} />
+							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} dataLLHI={dataSeaLevelProjectionLLHI} />
 					{:else}
 							<Chart {dataCountry}/>
 					{/if}

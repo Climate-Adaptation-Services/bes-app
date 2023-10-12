@@ -10,8 +10,9 @@
   import { w, h, country } from '$lib/stores';
 
   export let dataProjection;
+  export let dataLLHI
 
-  $: console.log(dataProjection)
+  $: console.log(dataLLHI)
 
 
   // const dataHistoric = data.zeespiegel_historisch;
@@ -33,7 +34,7 @@
     .scaleLinear()
     .domain([
       0,
-      150
+      140
     ])
     .range([innerHeight, margin.top])
     .nice()
@@ -97,6 +98,7 @@
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
  
+  <!-- <Line data={dataLLHI} color={'red'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} /> -->
 
   {#each median_lines as median_line}
     <g>
