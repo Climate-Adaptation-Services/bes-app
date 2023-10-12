@@ -33,7 +33,7 @@
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
-					{#if $theme === 'zst'}
+					{#if $h > 0 && $theme === 'zst'}
 							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} />
 					{:else}
 							<Chart {dataCountry}/>

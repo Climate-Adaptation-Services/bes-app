@@ -16,9 +16,9 @@
 
   // const dataHistoric = data.zeespiegel_historisch;
   
-  const margin = {bottom:100, top:50, left:100, right:200}
-  const innerWidth = $w - margin.left - margin.right
-  const innerHeight = $h - margin.top - margin.bottom
+  $: margin = {bottom:$h*0.05, top:$h*0.1, left:100, right:$w*0.1}
+  $: innerWidth = $w - margin.left - margin.right
+  $: innerHeight = $h - margin.top - margin.bottom
 
   $: xScale = d3
     .scaleLinear()
@@ -29,7 +29,7 @@
     .range([margin.left, innerWidth])
   // .nice()
 
-  let yScale = d3
+  $: yScale = d3
     .scaleLinear()
     .domain([
       0,
@@ -55,7 +55,7 @@
     .replace('.0', "")
 
   // Add scales to axis
-  const yAxis = d3
+  $: yAxis = d3
     .axisLeft(yScale)
     .ticks(5)
     .tickFormat(yAxisTickFormat);
