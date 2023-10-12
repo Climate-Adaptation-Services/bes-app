@@ -4,6 +4,7 @@
   import XAxis from './axes/XAxis.svelte';
   import YAxis from './axes/YAxis.svelte';
   import Line from './Line.svelte';
+  import LLHI from './LLHI.svelte';
   import Area from './Area.svelte'
   import ZeespiegelHover from './ZeespiegelHover.svelte';
 
@@ -98,7 +99,7 @@
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
  
-  <!-- <Line data={dataLLHI} color={'red'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} /> -->
+  <LLHI data={dataLLHI} color={'red'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
 
   {#each median_lines as median_line}
     <g>

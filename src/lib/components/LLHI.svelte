@@ -1,6 +1,6 @@
 <script>
   import * as d3 from 'd3';
-  import { afterUpdate } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
   export let data;
   export let color;
   export let variable;
@@ -10,7 +10,32 @@
   export let className;
   export let margin;
 
+  import { annotation } from 'd3-svg-annotation';
+
+  const annotations = [
+    {
+      note: {
+        label: "Low-likelihood-high-impact",
+        // title: "Annotation title"
+      },
+      data: {'year': 2060, variable:'130.26'},
+      dy: 30,
+      dx: 50
+    }
+  ]
+
+  const makeAnnotations = annotation()
+    .accessors({
+      x: d => xScale(d.year),
+      y: d => yScale(d.variable)
+    })
+    .annotations(annotations)
+
   afterUpdate(() => {
+    d3.select("." + className + 'g')
+    .append("g")
+    .call(makeAnnotations)
+    
     d3.select('.' + className + 'path')
       .datum(data)
       .attr('d', d3.line()

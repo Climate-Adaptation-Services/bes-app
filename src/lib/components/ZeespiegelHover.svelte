@@ -39,42 +39,42 @@
         x='50'
         y='0'
         class='legendYear'
-        font-size='20'
+        font-size='24'
       >{$hoveredYear}</text>
 
       <text
-        x='54'
+        x='64'
         y='30'
         class='legendYear'
-        font-size='13'
+        font-size='14'
       >Mediaan</text>
       <text
-        x='125'
+        x='135'
         y='30'
         class='legendYear'
-        font-size='13'
+        font-size='14'
       >Range</text>
 
       <!-- {/* Value ranges */} -->
       {#each linesData as d, i}
-        <g font-size='13'>
+        <g font-size='16'>
           <text
             fill={d.color}
             class='legendCircles'
             x='-26'
-            y={35 + (linesData.length - i) * 15}
+            y={35 + (linesData.length - i) * 20}
           >{d.legendText}</text>
           <text
             fill={d.color}
             class='legendCircles'
-            x='54'
-            y={35 + (linesData.length - i) * 15}
+            x='64'
+            y={35 + (linesData.length - i) * 20}
           >{Math.round(dataProjection.filter(d2 => d2.year === $hoveredYear)[0][d.median]) + ' cm'}</text>
           <text
             fill={d.color}
             class='legendCircles'
-            x='125'
-            y={35 + (linesData.length - i) * 15}
+            x='135'
+            y={35 + (linesData.length - i) * 20}
           >{Math.round(dataProjection.filter(d2 => d2.year === $hoveredYear)[0][d.variableLow]) + ' - ' + Math.round(dataProjection.filter(d => d.year === $hoveredYear)[0][d.variableHigh]) + ' cm'}</text>
         </g>
       {/each}
