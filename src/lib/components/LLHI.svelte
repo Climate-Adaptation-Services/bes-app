@@ -17,7 +17,7 @@
   const annotations = [
     {
       note: {
-        label: "Scenario voor hoogst mogelijke zeespiegelstijging",
+        label: "Scenario for highest possible sea level rise",
         // title: "Annotation title"
       },
       data: {'year': 2061, variable:'128.26'},

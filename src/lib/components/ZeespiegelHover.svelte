@@ -38,7 +38,7 @@
         y='30'
         class='legendYear'
         font-size='14'
-      >Mediaan</text>
+      >Median</text>
       <text
         x='135'
         y='30'

@@ -26,23 +26,45 @@
         selectedCountry.classList.add('activecountry');
 	}
 
-    // let themeSentence = 'Het wordt heter';
-	// $: if($theme === 'heter'){
-	// 	themeSentence = 'Het wordt heter'}
-	// else if($theme === 'droger'){
-	// 	themeSentence = 'Het wordt droger'}
-    // else if($theme === 'wind'){
-	// 	themeSentence = 'Er komt meer wind'}
-	// else{themeSentence = 'De zeespiegel stijgt'}
-
-    let themeSentence = 'Kies een indicator:';
+    let themeSentence = 'Choose an indicator:';
 	$: if($theme === 'zst'){
 		themeSentence = ''}
-	else{themeSentence = 'Kies een indicator:'}
+	else{themeSentence = 'Choose an indicator:'}
 
-    const optionsHeter = ['Gemiddelde temperatuur', 'Gemiddelde temperatuur droog seizoen', 'Gemiddelde temperatuur nat seizoen']
-    const optionsDroger = ['Gemiddelde neerslag', 'Gemiddelde neerslag droog seizoen', 'Gemiddelde neerslag nat seizoen']
-    const optionsWind = ['Gemiddelde wind', 'Gemiddelde wind droog seizoen', 'Gemiddelde wind nat seizoen']
+
+    const optionsHeter = [{
+		value: 'Gemiddelde temperatuur',
+		label: 'Average temperature',
+	}, {
+		value: 'Gemiddelde temperatuur droog seizoen',
+		label: 'Average temperature dry season',
+	}, {
+		value: 'Gemiddelde temperatuur nat seizoen',
+		label: 'Average temperature wet season',
+	}]
+
+    const optionsDroger = [{
+		value: 'Gemiddelde neerslag',
+		label: 'Average precipitation',
+	}, {
+		value: 'Gemiddelde neerslag droog seizoen',
+		label: 'Average precipitation dry season',
+	}, {
+		value: 'Gemiddelde neerslag nat seizoen',
+		label: 'Average precipitation wet season',
+	}]
+
+    const optionsWind = [{
+		value: 'Gemiddelde wind',
+		label: 'Average wind speed',
+	}, {
+		value: 'Gemiddelde wind droog seizoen',
+		label: 'Average wind speed dry season',
+	}, {
+		value: 'Gemiddelde wind nat seizoen',
+		label: 'Average wind speed wet season',
+	}]
+   
 
     let themeOptions = optionsHeter
     $: if($theme === 'heter'){
@@ -60,38 +82,39 @@
 </script>
 
 <section>
-    <h2>Kies een thema:</h2>
+    <h2>Choose a theme:</h2>
     <div class="item">
         <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/heter.png" on:click={handleClickTheme}>
-        <p class="caption heter activecaption">Het wordt heter</p>
+        <p class="caption heter activecaption">It's getting hotter</p>
     </div>
     <div class="item">
         <img class = 'themelogo droger' id = 'droger' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droger.png" on:click={handleClickTheme}> 
-        <p class="caption droger">Het wordt droger</p>
+        <p class="caption droger">It's getting dryer</p>
     </div>
     <div class="item">
         <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind.png" on:click={handleClickTheme}> 
-        <p class="caption wind ">Er komt meer wind</p>
+        <p class="caption wind ">There will be more wind</p>
     </div>
     <div class="item">
         <img class = 'themelogo zst' id = 'zst' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst.png" on:click={handleClickTheme}> 
-        <p class="caption zst">De zeespiegel stijgt</p>
+        <p class="caption zst">The sea levels are rising</p>
     </div>
     
     <h2>{themeSentence}</h2>
-    {#each themeOptions as option}
+    {#each themeOptions as { value, label }}
         <label class='keuzes'>
             <input
                 type="radio"
+                label = {label} 
                 name="laag"
-                value={option}
+                value={value}
                 bind:group={$datalaag}
             />
-            {option}
+            {label}
         </label>
     {/each}
 
-    <h2 class = 'kieslocatie'>Kies een locatie:</h2>
+    <h2 class = 'kieslocatie'>Choose a location:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
