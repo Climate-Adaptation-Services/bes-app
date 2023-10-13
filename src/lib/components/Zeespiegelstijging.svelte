@@ -18,7 +18,7 @@
 
   // const dataHistoric = data.zeespiegel_historisch;
   
-  $: margin = {bottom:$h*0.05, top:$h*0.1, left:100, right:$w*0.1}
+  $: margin = {bottom:$h*0.0, top:10+$h*0.1, left:100, right:$w*0.1}
   $: innerWidth = $w - margin.left - margin.right
   $: innerHeight = $h - margin.top - margin.bottom
 
