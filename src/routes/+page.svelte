@@ -73,7 +73,7 @@
 		flex:1;
 		flex-direction:column;
 		padding-left:2vw;
-		padding-top:15vh;
+		padding-top:10vh;
 		width:20%;
 	}
 

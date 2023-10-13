@@ -1,7 +1,6 @@
 <script>
   import { theme, datalaag } from "$lib/stores.js";
 
-  $: console.log($theme, $datalaag)
 
   let Tekst = '';
   $: if($datalaag === 'Gemiddelde temperatuur' || $datalaag === 'Gemiddelde neerslag' || $datalaag === 'Gemiddelde wind'){
