@@ -103,15 +103,4 @@
 		padding:10px;
 		top:90%;
 	}
-
-	.explanation_title{
-		flex:1;
-		display: flex;
-		align-items: left;
-		align-self:left;
-		margin:15px;
-		font-size:2vh;
-	}
-
-
 </style>

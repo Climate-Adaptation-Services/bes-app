@@ -56,7 +56,7 @@
     <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind.png" on:click={handleClickTheme}> 
     <img class = 'themelogo zst' id = 'zst' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst.png" on:click={handleClickTheme}> 
     
-    <h2>{themeSentence}</h2>
+    <h2>Kies een indicator:</h2>
     {#each themeOptions as option}
         <label class='keuzes'>
             <input
@@ -90,7 +90,7 @@
 
     .themelogo{
         width:4vw;
-        margin:1vw;
+        margin:0.8vw;
         margin-bottom: 5vh;     
     }
 
