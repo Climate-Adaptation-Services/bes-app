@@ -22,7 +22,7 @@
   <g>
     <!-- {/* Group to show hovered year and value ranges */} -->
     <g
-      transform={`translate(${margin.left+60},${margin.top+40})`}
+      transform={`translate(${margin.left+50},${margin.top+40})`}
       opacity='1'
     >
       <!-- {/* Hovered year */} -->
