@@ -134,6 +134,14 @@
         </g>
       {/each}
     </g>
+  {:else}
+    <g transform={`translate(${margin.left+120},${margin.top+40})`}>
+      <text font-style='italic' text-anchor='middle' fill='#808080'>
+        <tspan>Hover the chart to</tspan>
+        <tspan x=0 y='1em'>see more detail</tspan>
+      </text>
+      
+    </g>
   {/if}
 
   <!-- {/* rects for hovering */} -->
