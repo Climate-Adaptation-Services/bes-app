@@ -60,7 +60,7 @@
   });
 </script>
 
-<g class={className + 'g'} text-anchor='start' font-size='1vw'>
+<g class={className + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
   <path
     class={className + 'path'}
     stroke={color}
