@@ -65,7 +65,7 @@
 	}
 
 	.chart{
-		height:90%;
+		height:80%;
 	}
 
 	.sidepanel{
