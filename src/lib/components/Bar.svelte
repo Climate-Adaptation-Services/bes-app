@@ -53,6 +53,7 @@
             width={xScale.bandwidth()}
             fill={colors[i]}
             height = {0}
+    
             transform = {`translate (${xScale(xValue(d))}, ${yScale(yDomain[0])})`}
           />
           <text
