@@ -11,17 +11,18 @@
   export let margin;
 
   import { annotation } from 'd3-svg-annotation';
+  import { w } from '$lib/stores';
 
   // console.log(annotationXYThreshold)
   const annotations = [
     {
       note: {
-        label: "Schatting voor hoogst mogelijke zeespiegelstijging",
+        label: "Scenario voor hoogst mogelijke zeespiegelstijging",
         // title: "Annotation title"
       },
       data: {'year': 2057, variable:'112.26'},
       dy: 20,
-      dx: 50
+      dx: $w/28
     }
   ]
 
@@ -59,7 +60,7 @@
   });
 </script>
 
-<g class={className + 'g'} text-anchor='start'>
+<g class={className + 'g'} text-anchor='start' font-size='{$w*0.0012}vw'>
   <path
     class={className + 'path'}
     stroke={color}
@@ -75,7 +76,4 @@
     font-weight:normal;
   }
 
-  g{
-    font-size: 14px;
-  }
 </style>
