@@ -137,9 +137,11 @@
   {:else}
     <g transform={`translate(${margin.left+120},${margin.top+40})`}>
       <text font-style='italic' text-anchor='middle' fill='#808080'>
-        <tspan>Hover de grafiek om</tspan>
-        <tspan x=0 y='1em'>meer detail te zien</tspan>
+        <tspan x=0>Hover</tspan>
+        <tspan x=100>de grafiek om</tspan>
+        <tspan x=60 y='1em'>meer detail te zien</tspan>
       </text>
+      <image x='24' y='-16' href='/images/hand.png' width='18'/>
       
     </g>
   {/if}
