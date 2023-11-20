@@ -46,7 +46,7 @@
   afterUpdate(() => {
     makeAnnotations.updatedAccessors()
     
-    d3.select('.' + className + 'path')
+    d3.select('.' + className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'path')
       .datum(data.slice(0,58))
       .attr('d', d3.line()
         .x(d => xScale(d.year))
@@ -60,9 +60,9 @@
   });
 </script>
 
-<g class={className + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
+<g class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
   <path
-    class={className + 'path'}
+    class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'path'}
     stroke={color}
     stroke-width='1'
     fill="none"
