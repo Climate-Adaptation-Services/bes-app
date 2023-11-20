@@ -15,7 +15,6 @@
 
   $: console.log(dataLLHI)
 
-
   // const dataHistoric = data.zeespiegel_historisch;
   
   $: margin = {bottom:$h*0.0, top:10+$h*0.1, left:100, right:$w*0.1}

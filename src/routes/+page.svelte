@@ -19,7 +19,7 @@
 
 	$: dataSeaLevelProjectionLLHI = ($country === 'Bonaire')
     ? data.zeespiegel_projectiedata_bonaire_llhi
-    : data.zeespiegel_projectiedata_bonaire_llhi
+    : data.zeespiegel_projectiedata_saba_llhi
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
