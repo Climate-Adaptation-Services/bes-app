@@ -12,9 +12,9 @@
             class="legendlabel"
             font-size = '2.2vh'
         >
-            {'Legend'}
+            {'Legenda'}
         </text>
-        {#each ['High' , 'Low', 'Current' ] as d,i}
+        {#each ['Hoog' , 'Laag', 'Huidig' ] as d,i}
         <rect
             class={'legend' + 'rect'}
             transform = {`translate (${0}, ${i*0.034*screenHeight})`}

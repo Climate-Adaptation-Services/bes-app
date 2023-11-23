@@ -76,7 +76,7 @@
       'color': colorGematigd,
       'legendText': 'Moderate',
       'hachureAngle': '140',
-      'legendText2': 'With moderate',
+      'legendText2': 'Met beperkte',
       'y_offset_text': ['48', '62']
     }, {
       'median':'ssp585_50pc',
@@ -85,7 +85,7 @@
       'color': colorSterk,
       'legendText': 'Strong',
       'hachureAngle': '60',
-      'legendText2': 'With strong',
+      'legendText2': 'Met sterke',
       'y_offset_text': ['53', '67']
     }
   ]
@@ -98,7 +98,7 @@
 
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
-  <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>Rise in cm</text>
+  <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>Stijging in cm</text>
   <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
 
   {#each median_lines as median_line}
@@ -120,7 +120,7 @@
         class='legendText' 
         fill={median_line.color} 
         opacity={areaOpacity + 0.2}>
-        climate change
+        klimaatverandering
       </text>
     </g>
   {/each}

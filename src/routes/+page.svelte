@@ -31,9 +31,9 @@
 		$datalaag === 'Gemiddelde neerslag' ? (chartTitle = 'Average precipitation'):
 		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (chartTitle = 'Average precipitation dry season'):
 		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (chartTitle = 'Average precipitation wet season'):
-		$datalaag === 'Gemiddelde wind' ? (chartTitle = 'Average wind speed'):
-		$datalaag === 'Gemiddelde wind droog seizoen' ? (chartTitle = 'Average wind speed dry season'):
-		$datalaag === 'Gemiddelde wind nat seizoen' ? (chartTitle = 'Average wind speed wet season'):
+		$datalaag === 'Gemiddelde windsnelheid' ? (chartTitle = 'Average wind speed'):
+		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (chartTitle = 'Average wind speed dry season'):
+		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (chartTitle = 'Average wind speed wet season'):
 		(chartTitle = String($datalaag));
 		
 
@@ -45,7 +45,7 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' on ' + $country}</p>
+			<p class='chart-title'>{$datalaag + ' op ' + $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>

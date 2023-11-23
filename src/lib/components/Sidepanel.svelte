@@ -26,10 +26,10 @@
         selectedCountry.classList.add('activecountry');
 	}
 
-    let themeSentence = 'Choose an indicator:';
+    let themeSentence = 'Kies een onderwerp:';
 	$: if($theme === 'zst'){
 		themeSentence = ''}
-	else{themeSentence = 'Choose an indicator:'}
+	else{themeSentence = 'Kies een onderwerp:'}
 
 
     const optionsHeter = [{
@@ -55,13 +55,13 @@
 	}]
 
     const optionsWind = [{
-		value: 'Gemiddelde wind',
+		value: 'Gemiddelde windsnelheid',
 		label: 'Average wind speed',
 	}, {
-		value: 'Gemiddelde wind droog seizoen',
+		value: 'Gemiddelde windsnelheid droog seizoen',
 		label: 'Average wind speed dry season',
 	}, {
-		value: 'Gemiddelde wind nat seizoen',
+		value: 'Gemiddelde windsnelheid nat seizoen',
 		label: 'Average wind speed wet season',
 	}]
    
@@ -76,7 +76,7 @@
 	else{themeOptions = []}
     
     $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
-     $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
+     $theme === 'wind' ? ($datalaag = 'Gemiddelde windsnelheid'):
     ($datalaag = 'Gemiddelde neerslag');
 
 </script>
@@ -85,19 +85,19 @@
     <h2>Choose a theme:</h2>
     <div class="item">
         <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
-        <p class="caption heter activecaption">It's getting hotter</p>
+        <p class="caption heter activecaption">Het wordt heter</p>
     </div>
     <div class="item">
         <img class = 'themelogo droger' id = 'droger' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droogte_carib.png" on:click={handleClickTheme}> 
-        <p class="caption droger">It's getting dryer</p>
+        <p class="caption droger">Het wordt droger</p>
     </div>
     <div class="item">
         <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind_carib.png" on:click={handleClickTheme}> 
-        <p class="caption wind ">There will be more wind</p>
+        <p class="caption wind ">Er zal meer wind komen</p>
     </div>
     <div class="item">
         <img class = 'themelogo zst' id = 'zst' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst_carib.png" on:click={handleClickTheme}> 
-        <p class="caption zst">The sea levels are rising</p>
+        <p class="caption zst">De zeespiegel stijgt</p>
     </div>
     
     <h2>{themeSentence}</h2>
@@ -110,7 +110,7 @@
                 value={value}
                 bind:group={$datalaag}
             />
-            {label}
+            {value}
         </label>
     {/each}
 

@@ -41,7 +41,7 @@
 
   $: minData = [
     {
-        scenario:'Current',
+        scenario:'Huidig',
         data: filteredData[0]['huidig']
       },
     {
