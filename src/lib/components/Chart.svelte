@@ -55,11 +55,6 @@
       data: filteredData[0]['2100_min']
     }]
 
-  $: console.log($country)
-
-  $: console.log(maxData)
-
-
 
   $: yDomain = $theme === 'heter' ? [20,33]:
      $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
