@@ -26,43 +26,43 @@
         selectedCountry.classList.add('activecountry');
 	}
 
-    let themeSentence = 'Choose an indicator:';
+    let themeSentence = 'Skohe un indikadó:';
 	$: if($theme === 'zst'){
 		themeSentence = ''}
-	else{themeSentence = 'Choose an indicator:'}
+	else{themeSentence = 'Skohe un indikadó:'}
 
 
     const optionsHeter = [{
 		value: 'Gemiddelde temperatuur',
-		label: 'Average temperature',
+		label: 'Temperatura promedio',
 	}, {
 		value: 'Gemiddelde temperatuur droog seizoen',
-		label: 'Average temperature dry season',
+		label: 'Temperatura promedio di temporada seku',
 	}, {
 		value: 'Gemiddelde temperatuur nat seizoen',
-		label: 'Average temperature wet season',
+		label: 'Temperatura promedio di temporada ku awa',
 	}]
 
     const optionsDroger = [{
 		value: 'Gemiddelde neerslag',
-		label: 'Average precipitation',
+		label: 'Yobida promedio',
 	}, {
 		value: 'Gemiddelde neerslag droog seizoen',
-		label: 'Average precipitation dry season',
+		label: 'Yobida promedio den temporada seku',
 	}, {
 		value: 'Gemiddelde neerslag nat seizoen',
-		label: 'Average precipitation wet season',
+		label: 'Yobida promedio den temporada di yobida',
 	}]
 
     const optionsWind = [{
 		value: 'Gemiddelde wind',
-		label: 'Average wind speed',
+		label: 'Velosidat promedio di bientu',
 	}, {
 		value: 'Gemiddelde wind droog seizoen',
-		label: 'Average wind speed dry season',
+		label: 'Velosidat promedio di bientu den temporada seku',
 	}, {
 		value: 'Gemiddelde wind nat seizoen',
-		label: 'Average wind speed wet season',
+		label: 'Velosidat promedio di bientu den temporada di yobida',
 	}]
    
 
@@ -82,22 +82,22 @@
 </script>
 
 <section>
-    <h2>Choose a theme:</h2>
+    <h2>Skohe un tema:</h2>
     <div class="item">
         <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
-        <p class="caption heter activecaption">It's getting hotter</p>
+        <p class="caption heter activecaption">Ta birando mas kalor</p>
     </div>
     <div class="item">
         <img class = 'themelogo droger' id = 'droger' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droogte_carib.png" on:click={handleClickTheme}> 
-        <p class="caption droger">It's getting dryer</p>
+        <p class="caption droger">Ta birando mas seku</p>
     </div>
     <div class="item">
         <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind_carib.png" on:click={handleClickTheme}> 
-        <p class="caption wind ">There will be more wind</p>
+        <p class="caption wind ">Lo tin mas bientu</p>
     </div>
     <div class="item">
         <img class = 'themelogo zst' id = 'zst' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst_carib.png" on:click={handleClickTheme}> 
-        <p class="caption zst">The sea levels are rising</p>
+        <p class="caption zst">Nivel di laman ta subiendo</p>
     </div>
     
     <h2>{themeSentence}</h2>
@@ -114,11 +114,11 @@
         </label>
     {/each}
 
-    <h2 class = 'kieslocatie'>Choose a location:</h2>
+    <h2 class = 'kieslocatie'>Skohe un lugá:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
-    <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
+    <figcaption class = 'countrycaptionbo'>Boneiru</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
-    <figcaption class = 'countrycaptionse'>st. Eustatius & Saba</figcaption>    
+    <figcaption class = 'countrycaptionse'>st.Eustasius & Saba</figcaption>    
 </section>
 
 <style>

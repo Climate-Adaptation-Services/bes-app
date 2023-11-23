@@ -1,7 +1,7 @@
 <script>
 	import { w, h, datalaag, country, theme } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
-  import Sidepanel from "$lib/components/Sidepanel.svelte"
+  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
@@ -24,17 +24,22 @@
 	$:console.log($datalaag)
 
 	let chartTitle
-	$:  $theme === 'zst' ? (chartTitle = 'Sea level rise'):
-		$datalaag === 'Gemiddelde temperatuur' ? (chartTitle = 'Average temperature'):
-		$datalaag === 'Gemiddelde temperatuur droog seizoen' ? (chartTitle = 'Average temperature dry season'):
-		$datalaag === 'Gemiddelde temperatuur nat seizoen' ? (chartTitle = 'Average temperature wet season'):
-		$datalaag === 'Gemiddelde neerslag' ? (chartTitle = 'Average precipitation'):
-		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (chartTitle = 'Average precipitation dry season'):
-		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (chartTitle = 'Average precipitation wet season'):
-		$datalaag === 'Gemiddelde wind' ? (chartTitle = 'Average wind speed'):
-		$datalaag === 'Gemiddelde wind droog seizoen' ? (chartTitle = 'Average wind speed dry season'):
-		$datalaag === 'Gemiddelde wind nat seizoen' ? (chartTitle = 'Average wind speed wet season'):
+	$:  $theme === 'zst' ? (chartTitle = 'Di subida di nivel'):
+		$datalaag === 'Gemiddelde temperatuur' ? (chartTitle = 'Temperatura promedio'):
+		$datalaag === 'Gemiddelde temperatuur droog seizoen' ? (chartTitle = 'Temperatura promedio di temporada seku '):
+		$datalaag === 'Gemiddelde temperatuur nat seizoen' ? (chartTitle = 'Temperatura promedio di temporada ku awa '):
+		$datalaag === 'Gemiddelde neerslag' ? (chartTitle = 'Yobida promedio '):
+		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (chartTitle = 'Yobida promedio den temporada seku '):
+		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (chartTitle = 'Yobida promedio den temporada di yobida'):
+		$datalaag === 'Gemiddelde wind' ? (chartTitle = 'Velosidat promedio di bientu'):
+		$datalaag === 'Gemiddelde wind droog seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada seku'):
+		$datalaag === 'Gemiddelde wind nat seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada di yobida'):
 		(chartTitle = String($datalaag));
+
+	let chartTitleCountry
+	$:  $country === 'Bonaire' ? (chartTitleCountry = 'Boneiru'):
+		$country === 'st. Eustatius & Saba' ? (chartTitleCountry = 'st.Eustasius & Saba'):
+		''
 		
 
 </script>
@@ -45,7 +50,7 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' on ' + $country}</p>
+			<p class='chart-title'>{chartTitle + ' on ' + chartTitleCountry}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
