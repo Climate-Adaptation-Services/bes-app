@@ -18,7 +18,9 @@
     screenWidth = document.documentElement.clientWidth
   })
 
+
   $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
+
 
   const colorsMax = ['#E5CDC0', '#E5CDC0']
 
@@ -54,6 +56,9 @@
     }]
 
   $: console.log($country)
+
+  $: console.log(maxData)
+
 
 
   $: yDomain = $theme === 'heter' ? [20,33]:
