@@ -9,23 +9,23 @@
 		$datalaag === 'Gemiddelde neerslag' ? (variable = 'Average precipitation'):
 		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (variable = 'Average precipitation dry season'):
 		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (variable = 'Average precipitation wet season'):
-		$datalaag === 'Gemiddelde wind' ? (variable = 'Average wind speed'):
-		$datalaag === 'Gemiddelde wind droog seizoen' ? (variable = 'Average wind speed dry season'):
-		$datalaag === 'Gemiddelde wind nat seizoen' ? (variable = 'Average wind speed wet season'):
+		$datalaag === 'Gemiddelde windsnelheid' ? (variable = 'Average wind speed'):
+		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (variable = 'Average wind speed dry season'):
+		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (variable = 'Average wind speed wet season'):
 		(chartTitle = String($datalaag));
 
 
   let Tekst = '';
-  $: if(($datalaag === 'Gemiddelde temperatuur' || $datalaag === 'Gemiddelde neerslag' || $datalaag === 'Gemiddelde wind') && $theme !== 'zst'  ){
+  $: if(($datalaag === 'Gemiddelde temperatuur' || $datalaag === 'Gemiddelde neerslag' || $datalaag === 'Gemiddelde windsnelheid') && $theme !== 'zst'  ){
 		Tekst = 'The bars show the ' + variable. toLowerCase() + ' in the current climate (1991-2020) and for the future climate around 2050 and 2100  <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">(KNMI 2023 scenario’s)</a>. The scenarios represent the range within which climate change is likely to develop. This range depends on both the amount of greenhouse gases being emitted and the sensitivity of the climate system. The ‘low’ en ‘high’ scenarios reflect the two most widely differing scenarios.'
   }
   else if($theme === 'zst' ){
 		Tekst = 'The graph shows sea level rise relative to the period 1995 to 2014 <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">(KNMI 2023 scenario’s)</a>. The projections show the range within which climate change is likely to develop. This range depends on both the amount of greenhouse gases still being emitted (the two colours) and the sensitivity of the climate system (the shaded range).'
   }
-	else if(($datalaag === 'Gemiddelde temperatuur droog seizoen' || $datalaag === 'Gemiddelde neerslag droog seizoen' || $datalaag === 'Gemiddelde wind droog seizoen') && $theme !== 'zst'  ){
+	else if(($datalaag === 'Gemiddelde temperatuur droog seizoen' || $datalaag === 'Gemiddelde neerslag droog seizoen' || $datalaag === 'Gemiddelde windsnelheid droog seizoen') && $theme !== 'zst'  ){
 		Tekst = 'The bars show the ' + variable.split(' ').slice(0,2).join(' '). toLowerCase() + ' during the dry season in the current climate (1991-2020) and for the future climate around 2050 and 2100 <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">(KNMI 2023 scenario’s)</a>. The scenarios represent the range within which climate change is likely to develop. This range depends on both the amount of greenhouse gases being emitted and the sensitivity of the climate system. The ‘low’ en ‘high’ scenarios reflect the two most widely differing scenarios.'
   }
-	else if(($datalaag === 'Gemiddelde temperatuur nat seizoen' || $datalaag === 'Gemiddelde neerslag nat seizoen' || $datalaag === 'Gemiddelde wind nat seizoen')&& $theme !== 'zst'   ){
+	else if(($datalaag === 'Gemiddelde temperatuur nat seizoen' || $datalaag === 'Gemiddelde neerslag nat seizoen' || $datalaag === 'Gemiddelde windsnelheid nat seizoen')&& $theme !== 'zst'   ){
 		Tekst = 'The bars show the ' + variable.split(' ').slice(0,2).join(' '). toLowerCase() + ' during the wet season in the current climate (1991-2020) and for the future climate around 2050 and 2100 <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">(KNMI 2023 scenario’s)</a>. The scenarios represent the range within which climate change is likely to develop. This range depends on both the amount of greenhouse gases being emitted and the sensitivity of the climate system. The ‘low’ en ‘high’ scenarios reflect the two most widely differing scenarios.'
   }
 	

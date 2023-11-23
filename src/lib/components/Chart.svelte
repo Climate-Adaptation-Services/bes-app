@@ -65,7 +65,7 @@
   $: unit = $theme === 'heter' ? " °C":
     $theme === 'wind' ? " m/s":
     " mm"; 
-
+  
   
   function tickFormat(value){
     if ($theme === 'droger') {return d3.format('.0f')(value)}
