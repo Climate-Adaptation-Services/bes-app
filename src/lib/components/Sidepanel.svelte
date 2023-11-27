@@ -117,7 +117,7 @@
     <h2 class = 'kieslocatie'>Skohe un lugá:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Boneiru</figcaption>
-    <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
+    <img class = 'countrylogo se' id = 'st.Eustasius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionse'>st.Eustasius & Saba</figcaption>    
 </section>
 

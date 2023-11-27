@@ -21,7 +21,7 @@
     ? data.zeespiegel_projectiedata_bonaire_llhi
     : data.zeespiegel_projectiedata_saba_llhi
 
-	$:console.log($datalaag)
+	$:console.log($country)
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Di subida di nivel'):
@@ -38,7 +38,7 @@
 
 	let chartTitleCountry
 	$:  $country === 'Bonaire' ? (chartTitleCountry = 'Boneiru'):
-		$country === 'st. Eustatius & Saba' ? (chartTitleCountry = 'st.Eustasius & Saba'):
+		$country === 'st.Eustasius & Saba' ? (chartTitleCountry = 'st.Eustasius & Saba'):
 		''
 		
 

@@ -38,13 +38,13 @@
         y='30'
         class='legendYear'
         font-size='14'
-      >Median</text>
+      >Mediano</text>
       <text
         x='135'
         y='30'
         class='legendYear'
         font-size='14'
-      >Range</text>
+      >Rango</text>
 
       <!-- {/* Value ranges */} -->
       {#each linesData as d, i}
