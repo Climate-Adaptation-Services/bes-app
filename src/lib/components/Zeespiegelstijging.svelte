@@ -74,7 +74,7 @@
       'variableLow': 'ssp126_5pc',
       'variableHigh': 'ssp126_95pc',
       'color': colorGematigd,
-      'legendText': 'Moderate',
+      'legendText': 'Beperkt',
       'hachureAngle': '140',
       'legendText2': 'Met beperkte',
       'y_offset_text': ['48', '62']
@@ -83,7 +83,7 @@
       'variableLow': 'ssp585_5pc',
       'variableHigh': 'ssp585_95pc',
       'color': colorSterk,
-      'legendText': 'Strong',
+      'legendText': 'Sterk',
       'hachureAngle': '60',
       'legendText2': 'Met sterke',
       'y_offset_text': ['53', '67']
