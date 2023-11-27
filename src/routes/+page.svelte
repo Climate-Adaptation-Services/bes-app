@@ -31,9 +31,9 @@
 		$datalaag === 'Gemiddelde neerslag' ? (chartTitle = 'Yobida promedio '):
 		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (chartTitle = 'Yobida promedio den temporada seku '):
 		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (chartTitle = 'Yobida promedio den temporada di yobida'):
-		$datalaag === 'Gemiddelde wind' ? (chartTitle = 'Velosidat promedio di bientu'):
-		$datalaag === 'Gemiddelde wind droog seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada seku'):
-		$datalaag === 'Gemiddelde wind nat seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada di yobida'):
+		$datalaag === 'Gemiddelde windsnelheid' ? (chartTitle = 'Velosidat promedio di bientu'):
+		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada seku'):
+		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (chartTitle = 'Velosidat promedio di bientu den temporada di yobida'):
 		(chartTitle = String($datalaag));
 
 	let chartTitleCountry

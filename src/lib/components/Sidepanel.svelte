@@ -55,13 +55,13 @@
 	}]
 
     const optionsWind = [{
-		value: 'Gemiddelde wind',
+		value: 'Gemiddelde windsnelheid',
 		label: 'Velosidat promedio di bientu',
 	}, {
-		value: 'Gemiddelde wind droog seizoen',
+		value: 'Gemiddelde windsnelheid droog seizoen',
 		label: 'Velosidat promedio di bientu den temporada seku',
 	}, {
-		value: 'Gemiddelde wind nat seizoen',
+		value: 'Gemiddelde windsnelheid nat seizoen',
 		label: 'Velosidat promedio di bientu den temporada di yobida',
 	}]
    
@@ -76,7 +76,7 @@
 	else{themeOptions = []}
     
     $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
-     $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
+     $theme === 'wind' ? ($datalaag = 'Gemiddelde windsnelheid'):
     ($datalaag = 'Gemiddelde neerslag');
 
 </script>
