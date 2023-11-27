@@ -50,7 +50,7 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' on ' + chartTitleCountry}</p>
+			<p class='chart-title'>{chartTitle + ' na ' + chartTitleCountry}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
