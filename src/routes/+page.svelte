@@ -1,7 +1,7 @@
 <script>
 	import { w, h, datalaag, country, theme } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
-  import Sidepanel from "$lib/components/Sidepanel.svelte"
+  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
@@ -21,7 +21,7 @@
     ? data.zeespiegel_projectiedata_bonaire_llhi
     : data.zeespiegel_projectiedata_saba_llhi
 
-	$:console.log($datalaag)
+	$:console.log($theme, $datalaag, '///')
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Sea level rise'):
@@ -31,9 +31,9 @@
 		$datalaag === 'Gemiddelde neerslag' ? (chartTitle = 'Average precipitation'):
 		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (chartTitle = 'Average precipitation dry season'):
 		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (chartTitle = 'Average precipitation wet season'):
-		$datalaag === 'Gemiddelde wind' ? (chartTitle = 'Average wind speed'):
-		$datalaag === 'Gemiddelde wind droog seizoen' ? (chartTitle = 'Average wind speed dry season'):
-		$datalaag === 'Gemiddelde wind nat seizoen' ? (chartTitle = 'Average wind speed wet season'):
+		$datalaag === 'Gemiddelde windsnelheid' ? (chartTitle = 'Average wind speed'):
+		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (chartTitle = 'Average wind speed dry season'):
+		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (chartTitle = 'Average wind speed wet season'):
 		(chartTitle = String($datalaag));
 		
 

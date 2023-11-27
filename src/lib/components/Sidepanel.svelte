@@ -55,13 +55,13 @@
 	}]
 
     const optionsWind = [{
-		value: 'Gemiddelde wind',
+		value: 'Gemiddelde windsnelheid',
 		label: 'Average wind speed',
 	}, {
-		value: 'Gemiddelde wind droog seizoen',
+		value: 'Gemiddelde windsnelheid droog seizoen',
 		label: 'Average wind speed dry season',
 	}, {
-		value: 'Gemiddelde wind nat seizoen',
+		value: 'Gemiddelde windsnelheid nat seizoen',
 		label: 'Average wind speed wet season',
 	}]
    
@@ -76,7 +76,7 @@
 	else{themeOptions = []}
     
     $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
-     $theme === 'wind' ? ($datalaag = 'Gemiddelde wind'):
+     $theme === 'wind' ? ($datalaag = 'Gemiddelde windsnelheid'):
     ($datalaag = 'Gemiddelde neerslag');
 
 </script>
