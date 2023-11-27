@@ -12,7 +12,7 @@
 		$datalaag === 'Gemiddelde windsnelheid' ? (variable = 'e Velosidat di bientu promedio'):
 		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (variable = 'e bientu promedio'):
 		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (variable = 'e bientu promedio '):
-		(chartTitle = String($datalaag));
+		(variable = 'not working');
 
 
   let Tekst = '';
