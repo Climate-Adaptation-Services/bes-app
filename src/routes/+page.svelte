@@ -24,7 +24,7 @@
 	$:console.log($country)
 
 	let chartTitle
-	$:  $theme === 'zst' ? (chartTitle = 'Di subida di nivel'):
+	$:  $theme === 'zst' ? (chartTitle = 'Subida di nivel di laman'):
 		$datalaag === 'Gemiddelde temperatuur' ? (chartTitle = 'Temperatura promedio'):
 		$datalaag === 'Gemiddelde temperatuur droog seizoen' ? (chartTitle = 'Temperatura promedio di temporada seku '):
 		$datalaag === 'Gemiddelde temperatuur nat seizoen' ? (chartTitle = 'Temperatura promedio di temporada ku awa '):
