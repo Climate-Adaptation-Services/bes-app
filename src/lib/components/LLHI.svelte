@@ -18,8 +18,6 @@
     {
       note: {
         label: "Senario pa subida mas haltu posibel di nivel di laman",
-        wrap: $w/6,
-        bgPadding: 0,
         },
       data: {'year': 2056, variable:'110.26'},
       dy: -20,
@@ -43,8 +41,6 @@
     .append("g")
     .call(makeAnnotations)
 
-    d3.select('.annotation-note-label')
-      .style('font-size', '1.5vh')
   })
 
   afterUpdate(() => {
