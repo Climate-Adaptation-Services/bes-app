@@ -21,8 +21,6 @@
     ? data.zeespiegel_projectiedata_bonaire_llhi
     : data.zeespiegel_projectiedata_saba_llhi
 
-	$:console.log($country)
-
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Subida di nivel di laman'):
 		$datalaag === 'Gemiddelde temperatuur' ? (chartTitle = 'Temperatura promedio'):

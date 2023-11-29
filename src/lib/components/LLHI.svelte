@@ -11,16 +11,17 @@
   export let margin;
 
   import { annotation } from 'd3-svg-annotation';
-  import { w } from '$lib/stores';
+  import { w, h } from '$lib/stores';
 
   // console.log(annotationXYThreshold)
   const annotations = [
     {
       note: {
         label: "Senario pa subida mas haltu posibel di nivel di laman",
-        // title: "Annotation title"
-      },
-      data: {'year': 2061, variable:'128.26'},
+        wrap: $w/6,
+        bgPadding: 0,
+        },
+      data: {'year': 2056, variable:'110.26'},
       dy: -20,
       dx: $w/18
     }
@@ -41,6 +42,9 @@
     d3.select("." + className + 'g')
     .append("g")
     .call(makeAnnotations)
+
+    d3.select('.annotation-note-label')
+      .style('font-size', '1.5vh')
   })
 
   afterUpdate(() => {
