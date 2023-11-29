@@ -20,7 +20,7 @@
         label: "Scenario voor hoogst mogelijke zeespiegelstijging",
         // title: "Annotation title"
       },
-      data: {'year': 2061, variable:'128.26'},
+      data: {'year': 2059, variable:'120.26'},
       dy: -20,
       dx: $w/18
     }
