@@ -36,7 +36,7 @@
 
 	let chartTitleCountry
 	$:  $country === 'Bonaire' ? (chartTitleCountry = 'Boneiru'):
-		$country === 'Statia & Saba' ? (chartTitleCountry = 'Statia & Saba'):
+		$country === 'st.Eustatius & Saba' ? (chartTitleCountry = 'Statia & Saba'):
 		''
 		
 

@@ -89,7 +89,7 @@
       'y_offset_text': ['53', '67']
     }
   ]
-
+  $:console.log($country)
   const areaOpacity = '0.6';
 
 </script>

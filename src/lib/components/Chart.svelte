@@ -58,8 +58,8 @@
 
   $: yDomain = $theme === 'heter' ? [20,33]:
      $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
-     $theme === 'wind' & $country === 'Statia & Saba' ? [5,8]:
-     $theme === 'droger' & $country === 'Statia & Saba' ? [0,1100]:
+     $theme === 'wind' & $country === 'st.Eustatius & Saba' ? [5,8]:
+     $theme === 'droger' & $country === 'st.Eustatius & Saba' ? [0,1100]:
     [0,600];
 
   $: unit = $theme === 'heter' ? " °C":
