@@ -29,9 +29,6 @@
 		Tekst = 'Bara ta mustra ' + variable.split(' ').join(' '). toLowerCase() + ' durante e temporada muhá den e klima aktual (1991-2020) i pa klima den futuro banda di 2050 i 2100 <a href="https://cdn.knmi.nl/system/ckeditor/attachment_files/data/000/000/299/original/KNMI23_klimaatscenarios_BES_papiamentu.pdf" target="_blank">(senarionan di KNMI 2023)</a>. E senarionan ta representá e rango den kua probablemente kambio di klima ta desaroyá. E rango akí ta dependé di tantu e kantidat di gas ku ta emití komo e sensibilidat di e sistema di klima. E senarionan ‘bou’ i ‘haltu’ ta reflehá e dos senarionan mas diferente.'
   }
   
-	
-
-  $: console.log($theme, Tekst, $datalaag)
 </script>
 
 <section>
