@@ -13,7 +13,7 @@
   export let dataProjection;
   export let dataLLHI
 
-  $: console.log(dataLLHI)
+  $: console.log($country)
 
 
   // const dataHistoric = data.zeespiegel_historisch;

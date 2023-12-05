@@ -13,7 +13,7 @@
   import { annotation } from 'd3-svg-annotation';
   import { w } from '$lib/stores';
 
-  // console.log(annotationXYThreshold)
+  console.log(className)
   const annotations = [
     {
       note: {
