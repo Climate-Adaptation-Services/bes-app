@@ -20,7 +20,7 @@
         label: "Scenario for highest possible sea level rise",
         // title: "Annotation title"
       },
-      data: {'year': 2061, variable:'128.26'},
+      data: {'year': 2056, variable:'110.26'},
       dy: -20,
       dx: $w/18
     }
