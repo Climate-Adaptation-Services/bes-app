@@ -82,7 +82,7 @@
 </script>
 
 <section>
-    <h2>Choose a theme:</h2>
+    <h2>Kies een thema:</h2>
     <div class="item">
         <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
         <p class="caption heter activecaption">Het wordt heter</p>
@@ -114,7 +114,7 @@
         </label>
     {/each}
 
-    <h2 class = 'kieslocatie'>Choose a location:</h2>
+    <h2 class = 'kieslocatie'>Kies een locatie:</h2>
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'st.Eustatius & Saba' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
