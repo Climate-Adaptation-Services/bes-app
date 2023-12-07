@@ -22,7 +22,7 @@
       },
       data: {'year': 2059, variable:'118.26'},
       dy: -10,
-      dx: $w/18
+      dx: $w/18,
     }
   ]
 
@@ -59,6 +59,7 @@
           }
         }));
   });
+
 </script>
 
 <g class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
