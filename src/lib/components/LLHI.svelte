@@ -11,9 +11,8 @@
   export let margin;
 
   import { annotation } from 'd3-svg-annotation';
-  import { w } from '$lib/stores';
+  import { w, country } from '$lib/stores';
 
-  console.log(className)
   const annotations = [
     {
       note: {
@@ -27,15 +26,15 @@
   ]
 
   const makeAnnotations = annotation()
-    .accessors({
-      x: d => xScale(d.year),
-      y: d => yScale(d.variable)
-    })
-    .accessorsInverse({
-      date: d => xScale.invert(d.year),
-      close: d => yScale.invert(d.variable)
-    })
-    .annotations(annotations)
+      .accessors({
+        x: d => xScale(d.year),
+        y: d => yScale(d.variable)
+      })
+      .accessorsInverse({
+        date: d => xScale.invert(d.year),
+        close: d => yScale.invert(d.variable)
+      })
+      .annotations(annotations)
 
   onMount(() => {
     d3.select("." + className + 'g')
@@ -44,6 +43,7 @@
   })
 
   afterUpdate(() => {
+
     makeAnnotations.updatedAccessors()
     
     d3.select('.' + className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'path')
@@ -58,6 +58,9 @@
           }
         }));
   });
+
+
+
 </script>
 
 <g class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
