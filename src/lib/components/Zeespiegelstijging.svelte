@@ -99,9 +99,9 @@
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
   <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>Rise in cm</text>
-  {#if $country === 'Bonaire'}
-    <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
-  {/if}
+  
+  <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
+
   
   {#each median_lines as median_line}
     <g>
