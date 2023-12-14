@@ -37,7 +37,7 @@
       .annotations(annotations)
 
   onMount(() => {
-    d3.select("." + className + 'g')
+    d3.select("." + className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g')
     .append("g")
     .call(makeAnnotations)
   })

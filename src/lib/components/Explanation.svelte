@@ -31,7 +31,6 @@
 		
 	
 
-  $: console.log($theme, Tekst, $datalaag)
 </script>
 
 <section>
