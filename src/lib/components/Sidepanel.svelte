@@ -118,7 +118,7 @@
     <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
     <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
     <img class = 'countrylogo se' id = 'Saba & St.Eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
-    <figcaption class = 'countrycaptionse'>Saba & st. Eustatius</figcaption>    
+    <figcaption class = 'countrycaptionse'>Saba & St. Eustatius</figcaption>    
 </section>
 
 <style>
