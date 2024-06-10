@@ -147,7 +147,7 @@
   <!-- {/* rects for hovering */} -->
   {#each dataProjection as d,i}
     <rect
-      width={hoverBarWidth}
+      width={xScale(dataProjection[i].Minutes) - xScale(dataProjection[i+1].Minutes);}
       height={height+40}
       fill='steelblue'
       x={xScale(dataProjection[i].year) - hoverBarWidth/2}
