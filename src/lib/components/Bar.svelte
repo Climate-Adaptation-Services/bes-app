@@ -16,15 +16,15 @@
   export let className   
   export let tickFormat
   
-  $: markslabelposition = $country === 'st.Eustatius & Saba' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'st.Eustatius & Saba' && $theme === 'heter' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'st.Eustatius & Saba' && $theme === 'droger' && className === 'mark_max' ? (-0.01*screenHeight):
+  $: markslabelposition = $country === 'Saba & St.Eustatius' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
+    $country === 'Saba & St.Eustatius' && $theme === 'heter' && className === 'mark_max' ? (-0.01*screenHeight):
+    $country === 'Saba & St.Eustatius' && $theme === 'droger' && className === 'mark_max' ? (-0.01*screenHeight):
     $country === 'Bonaire' && $theme === 'heter' && className === 'mark_max' ? (-0.01*screenHeight):
     (0.02*screenHeight);
 
-  $: markTextColor = $country === 'st.Eustatius & Saba' && $theme === 'wind' && className === 'mark_max' ? 'grey':
-     $country === 'st.Eustatius & Saba' && $theme === 'heter' && className === 'mark_max' ? 'grey':
-     $country === 'st.Eustatius & Saba' && $theme === 'droger' && className === 'mark_max' ? 'grey':
+  $: markTextColor = $country === 'Saba & St.Eustatius' && $theme === 'wind' && className === 'mark_max' ? 'grey':
+     $country === 'Saba & St.Eustatius' && $theme === 'heter' && className === 'mark_max' ? 'grey':
+     $country === 'Saba & St.Eustatius' && $theme === 'droger' && className === 'mark_max' ? 'grey':
      $country === 'Bonaire' && $theme === 'heter' && className === 'mark_max' ? 'grey':
     'white'; 
 
