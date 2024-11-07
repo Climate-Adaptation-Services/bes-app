@@ -13,6 +13,8 @@
   export let dataProjection;
   export let dataLLHI
 
+  $: console.log('hoihohi')
+
   // const dataHistoric = data.zeespiegel_historisch;
   
   $: margin = {bottom:$h*0.05, top:$h*0.1, left:100, right:$w*0.1}
@@ -59,8 +61,6 @@
     .ticks(5)
     .tickFormat(yAxisTickFormat);
 
-  // const colorGematigd = '#009fd1';
-  // const colorSterk = 'red';
 
   const colorGematigd = '#017676'
   const colorSterk = '#f44f01'
