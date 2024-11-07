@@ -55,11 +55,13 @@
       data: filteredData[0]['2100_min']
     }]
 
+    $: console.log($country)
+
 
   $: yDomain = $theme === 'heter' ? [20,33]:
      $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
-     $theme === 'wind' & $country === 'st.Eustatius & Saba' ? [5,8]:
-     $theme === 'droger' & $country === 'st.Eustatius & Saba' ? [0,1100]:
+     $theme === 'wind' & $country === 'Saba & St.Eustatius' ? [5,8]:
+     $theme === 'droger' & $country === 'Saba & St.Eustatius' ? [0,1100]:
     [0,600];
 
   $: unit = $theme === 'heter' ? " °C":
