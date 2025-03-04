@@ -1,5 +1,5 @@
 <script>
-    import { datalaag, theme, country } from "$lib/stores.js";
+    import { datalaag, theme, country, countrySelection } from "$lib/stores.js";
 
     function handleClickTheme(event) {
 		$theme = event.target.id 
@@ -114,11 +114,14 @@
         </label>
     {/each}
 
-    <h2 class = 'kieslocatie'>Kies een locatie:</h2>
-    <img class = 'countrylogo bo activecountry' id = 'Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
-    <figcaption class = 'countrycaptionbo'>Bonaire</figcaption>
-    <img class = 'countrylogo se' id = 'Saba & St.Eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
-    <figcaption class = 'countrycaptionse'>Saba & St. Eustatius</figcaption>    
+    
+    {#if $countrySelection}
+        <h2 class='kieslocatie'>Kies een locatie:</h2>
+        <img class='countrylogo bo activecountry' id='Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
+        <figcaption class='countrycaptionbo'>Bonaire</figcaption>
+        <img class='countrylogo se' id='Saba & St.Eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
+        <figcaption class='countrycaptionse'>Saba & St. Eustatius</figcaption>
+    {/if}
 </section>
 
 <style>

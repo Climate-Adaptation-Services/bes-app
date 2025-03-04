@@ -62,6 +62,8 @@
      $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
      $theme === 'wind' & $country === 'Saba & St.Eustatius' ? [5,8]:
      $theme === 'droger' & $country === 'Saba & St.Eustatius' ? [0,1100]:
+     $theme === 'wind' & $country === 'St. Maarten' ? [5,8]:
+     $theme === 'droger' & $country === 'St. Maarten' ? [0,1100]:
     [0,600];
 
   $: unit = $theme === 'heter' ? " °C":

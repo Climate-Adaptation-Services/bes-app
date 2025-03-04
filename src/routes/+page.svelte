@@ -5,22 +5,34 @@
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
+	import { setCountry } from '$lib/noncomponents/setCountry.js'
 	
-	export let data
+	export let data;
+	setCountry(data.country_iso);
 
 	let dataCountry;
-	$: $country === 'Bonaire' 
-		? (dataCountry = data.bonaire_klimaatdata)
-		: (dataCountry = data.sabast_klimaatdata);
+	let dataSeaLevelProjection;
+	let dataSeaLevelProjectionLLHI;
 
-	$: dataSeaLevelProjection = ($country === 'Bonaire')
-    ? data.zeespiegel_projectiedata_bonaire
-    : data.zeespiegel_projectiedata_saba
+	function selectDataCountry(country) {
+		if (country === 'Bonaire') {
+			dataCountry = data.bonaire_klimaatdata;
+			dataSeaLevelProjection = data.zeespiegel_projectiedata_bonaire;
+			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_bonaire_llhi;
+		} else if (country === 'Saba & St.Eustatius') {
+			dataCountry = data.sabast_klimaatdata;
+			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
+			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
+		} else if (country === 'St. Maarten') {
+			dataCountry = data.stmaarten_klimaatdata;
+			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
+			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
+		}
+	}
 
-	$: dataSeaLevelProjectionLLHI = ($country === 'Bonaire')
-    ? data.zeespiegel_projectiedata_bonaire_llhi
-    : data.zeespiegel_projectiedata_saba_llhi
-
+	$: {
+		selectDataCountry($country);
+	}
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):

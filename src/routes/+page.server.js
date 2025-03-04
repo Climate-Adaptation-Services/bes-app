@@ -1,6 +1,14 @@
 import { dsv } from 'd3'
 
-export function load(){
+export async function load({ url }){
+  // Access the URLSearchParams object
+  const searchParams = url.searchParams;
+
+  // Get individual query parameters
+  const lang = searchParams.get('lang');
+  let country_iso = searchParams.get('country_iso') || 'BQ';
+  country_iso = country_iso.toLowerCase();
+
   const bonaire_klimaatdata = dsv(',', "https://raw.githubusercontent.com/sophievanderhorst/data/main/bonaire_klimaatdata.csv")
   const zeespiegel_projectiedata_bonaire = dsv(',', "https://gist.githubusercontent.com/stichtingcas/cdcf6d53bdfeac4494ad81a4b2878aab/raw/6aeabf231a8ddf4d7835436a3a695ac9091dff0f/bonaire-zeespiegelstijging.csv")
   const zeespiegel_projectiedata_saba = dsv(',', "https://gist.githubusercontent.com/stichtingcas/86d27026230225096cc431697d0b0d94/raw/2d0a7a404447ce130f2d231cd3f7da1df38a65c0/saba-zeespiegelstijging.csv")
@@ -8,7 +16,7 @@ export function load(){
   const zeespiegel_projectiedata_saba_llhi = dsv(',', "https://gist.githubusercontent.com/stichtingcas/01a920f71325b35fc193d48f19dd065e/raw/baef6c01aa777844fad66c596eebee5ae37eb88f/llhi-saba.csv")
   const zeespiegel_historisch = dsv(',', "https://gist.githubusercontent.com/stichtingcas/a1bf8178404a14f81aeb9d02b21058f5/raw/fc65d6816f0c2bfde5787775abcd81bd7d31e4a5/zeespiegelstijging-historisch.csv")
   const sabast_klimaatdata = dsv(',', "https://raw.githubusercontent.com/sophievanderhorst/data/main/sabast_klimaatdata.csv")
+  const stmaarten_klimaatdata = dsv(',', "https://raw.githubusercontent.com/Climate-Adaptation-Services/data/refs/heads/main/climatestatistics/stmaarten_climatestatistics.csv?token=GHSAT0AAAAAAC4VSZH3IWQCKDFQKCEN6G3CZ6G7YBA")
 
-  return { bonaire_klimaatdata, sabast_klimaatdata, zeespiegel_historisch, zeespiegel_projectiedata_bonaire, zeespiegel_projectiedata_saba, zeespiegel_projectiedata_bonaire_llhi, zeespiegel_projectiedata_saba_llhi }
+  return { lang, country_iso, bonaire_klimaatdata, sabast_klimaatdata, stmaarten_klimaatdata, zeespiegel_historisch, zeespiegel_projectiedata_bonaire, zeespiegel_projectiedata_saba, zeespiegel_projectiedata_bonaire_llhi, zeespiegel_projectiedata_saba_llhi};
 }
-
