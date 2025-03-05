@@ -11,6 +11,8 @@ export const country = writable(null)
 
 export const countrySelection = writable(null)
 
+export const lang = writable(null)
+
 export const csvData = writable(null)
 
 export const hoveredYear = writable(null)

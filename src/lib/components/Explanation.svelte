@@ -1,5 +1,6 @@
 <script>
   import { theme, datalaag } from "$lib/stores.js";
+  import { t } from '$lib/i18n/translate.js';
 
   let variable
 	$:  $theme === 'zst' ? (variable = 'Sea level rise'):
@@ -18,15 +19,22 @@
 
   let Tekst = '';
   $: if(($datalaag === 'Gemiddelde windsnelheid' || $datalaag === 'Gemiddelde neerslag' || $datalaag === 'Gemiddelde temperatuur') && $theme !== 'zst') {
-		Tekst = 'De grafiek toont ' + variable.split(' ').slice(0,2).join(' '). toLowerCase()+ ' voor het huidige klimaat (1991-2020) en voor het toekomstige klimaat rond 2050 en 2100, volgens <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">de KNMI’23-klimaatscenario’s</a>. De klimaatscenario’s tonen de bandbreedte waarbinnen klimaatverandering zich waarschijnlijk zal ontwikkelen. Deze bandbreedte is afhankelijk van de hoeveelheid broeikasgassen die wordt uitgestoten en de gevoeligheid van het klimaatsysteem. De scenario’s ‘laag’ en ‘hoog’ zijn de twee scenario’s die het verst uit elkaar liggen.'
+		Tekst = t('explanationAnnual', {
+      variable: variable.split(' ').slice(0, 2).join(' ').toLowerCase()
+    })
   	}
+
+
 	  
 	else if($theme === 'zst' ){
-			Tekst = 'De grafiek toont de zeespiegelstijging ten opzichte van de periode 1995 tot 2014 volgens de KNMI’23-klimaatscenario’s. De klimaatscenario’s tonen de bandbreedte waarbinnen klimaatverandering zich waarschijnlijk zal ontwikkelen. Deze bandbreedte is afhankelijk van de hoeveelheid broeikasgassen die wordt uitgestoten (de twee kleuren) en de gevoeligheid van het klimaatsysteem (het donkere deel). '
+			Tekst = t('explanationSeaLevelRise')
 	}
 
 	else if($theme !== 'zst' ){
-		Tekst = 'De grafiek toont de ' + variable.split(' ').slice(0,2).join(' '). toLowerCase()+ ' tijdens het ' + variable.split(' ').slice(2,3).join(' '). toLowerCase()+ ' seizoen voor het huidige klimaat (1991-2020) en voor het toekomstige klimaat rond 2050 en 2100, volgens <a href="https://cdn.knmi.nl/system/data_center_publications/files/000/071/901/original/KNMI23_klimaatscenarios_gebruikersrapport_23-03.pdf" target="_blank">de KNMI’23-klimaatscenario’s</a>. De klimaatscenario’s tonen de bandbreedte waarbinnen klimaatverandering zich waarschijnlijk zal ontwikkelen. Deze bandbreedte is afhankelijk van de hoeveelheid broeikasgassen die wordt uitgestoten en de gevoeligheid van het klimaatsysteem. De scenario’s ‘laag’ en ‘hoog’ zijn de twee scenario’s die het verst uit elkaar liggen.'
+		Tekst = t('explanationSeason', {
+			variable: variable.split(' ').slice(0, 2).join(' ').toLowerCase(), 
+			season: variable.split(' ').slice(2,3).join(' '). toLowerCase()
+		})
 	}
 		
 	

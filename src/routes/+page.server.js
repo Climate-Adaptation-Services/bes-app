@@ -16,7 +16,7 @@ export async function load({ url }){
   const zeespiegel_projectiedata_saba_llhi = dsv(',', "https://gist.githubusercontent.com/stichtingcas/01a920f71325b35fc193d48f19dd065e/raw/baef6c01aa777844fad66c596eebee5ae37eb88f/llhi-saba.csv")
   const zeespiegel_historisch = dsv(',', "https://gist.githubusercontent.com/stichtingcas/a1bf8178404a14f81aeb9d02b21058f5/raw/fc65d6816f0c2bfde5787775abcd81bd7d31e4a5/zeespiegelstijging-historisch.csv")
   const sabast_klimaatdata = dsv(',', "https://raw.githubusercontent.com/sophievanderhorst/data/main/sabast_klimaatdata.csv")
-  const stmaarten_klimaatdata = dsv(',', "https://raw.githubusercontent.com/Climate-Adaptation-Services/data/refs/heads/main/climatestatistics/stmaarten_climatestatistics.csv?token=GHSAT0AAAAAAC4VSZH3IWQCKDFQKCEN6G3CZ6G7YBA")
+  const stmaarten_klimaatdata = dsv(',', "https://raw.githubusercontent.com/Climate-Adaptation-Services/data/refs/heads/main/climatestatistics/stmaarten_climatestatistics.csv")
 
   return { lang, country_iso, bonaire_klimaatdata, sabast_klimaatdata, stmaarten_klimaatdata, zeespiegel_historisch, zeespiegel_projectiedata_bonaire, zeespiegel_projectiedata_saba, zeespiegel_projectiedata_bonaire_llhi, zeespiegel_projectiedata_saba_llhi};
 }

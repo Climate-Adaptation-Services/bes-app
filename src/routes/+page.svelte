@@ -6,9 +6,11 @@
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
 	import { setCountry } from '$lib/noncomponents/setCountry.js'
+	import {setLanguage} from '$lib/noncomponents/setLanguage.js'
 	
 	export let data;
 	setCountry(data.country_iso);
+	setLanguage(data);
 
 	let dataCountry;
 	let dataSeaLevelProjection;

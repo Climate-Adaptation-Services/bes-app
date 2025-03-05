@@ -1,5 +1,6 @@
 <script>
     import { datalaag, theme, country, countrySelection } from "$lib/stores.js";
+    import { t } from '$lib/i18n/translate.js';
 
     function handleClickTheme(event) {
 		$theme = event.target.id 
@@ -26,10 +27,10 @@
         selectedCountry.classList.add('activecountry');
 	}
 
-    let themeSentence = 'Kies een onderwerp:';
+    let indicatorSentence = t('chooseIndicator');
 	$: if($theme === 'zst'){
-		themeSentence = ''}
-	else{themeSentence = 'Kies een onderwerp:'}
+		indicatorSentence = ''}
+	else{indicatorSentence = t('chooseIndicator')}
 
 
     const optionsHeter = [{
@@ -82,7 +83,7 @@
 </script>
 
 <section>
-    <h2>Kies een thema:</h2>
+    <h2>{t('chooseTheme')}</h2>
     <div class="item">
         <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
         <p class="caption heter activecaption">Het wordt heter</p>
@@ -100,7 +101,7 @@
         <p class="caption zst">De zeespiegel stijgt</p>
     </div>
     
-    <h2>{themeSentence}</h2>
+    <h2>{indicatorSentence}</h2>
     {#each themeOptions as { value, label }}
         <label class='keuzes'>
             <input
@@ -116,7 +117,7 @@
 
     
     {#if $countrySelection}
-        <h2 class='kieslocatie'>Kies een locatie:</h2>
+        <h2 class='kieslocatie'>{t('chooseLocation')}</h2>
         <img class='countrylogo bo activecountry' id='Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
         <figcaption class='countrycaptionbo'>Bonaire</figcaption>
         <img class='countrylogo se' id='Saba & St.Eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 

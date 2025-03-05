@@ -6,6 +6,7 @@
   
   import Bar from './Bar.svelte';
   import Legend from './Legend.svelte';
+  import { t } from "$lib/i18n/translate";
 
   export let dataCountry
 
@@ -43,7 +44,7 @@
 
   $: minData = [
     {
-        scenario:'Huidig',
+        scenario: t('scenarioCurrent'),
         data: filteredData[0]['huidig']
       },
     {
