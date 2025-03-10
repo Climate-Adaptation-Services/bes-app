@@ -9,4 +9,13 @@ export const english = {
     'chooseTheme': 'Choose a theme:',
     'chooseIndicator': 'Choose an indicator:',
     'chooseLocation': 'Choose a location:',
+    "temperatureAvg": "Average temperature",
+    "temperatureAvgDry": "Average temperature dry season",
+    "temperatureAvgWet": "Average temperature wet season",
+    "precipitationAvg": "Average precipitation",
+    "precipitationAvgDry": "Average precipitation dry season",
+    "precipitationAvgWet": "Average precipitation wet season",
+    "windAvg": "Average wind speed",  
+    "windAvgDry": "Average wind speed dry season",
+    "windAvgWet": "Average wind speed wet season", 
 }

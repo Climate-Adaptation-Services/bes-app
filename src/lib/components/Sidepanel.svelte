@@ -1,5 +1,5 @@
 <script>
-    import { datalaag, theme, country, countrySelection } from "$lib/stores.js";
+    import { datalaag, theme, country, countrySelection, indicatorOptionsCountry } from "$lib/stores.js";
     import { t } from '$lib/i18n/translate.js';
 
     function handleClickTheme(event) {
@@ -28,57 +28,62 @@
 	}
 
     let indicatorSentence = t('chooseIndicator');
-	$: if($theme === 'zst'){
-		indicatorSentence = ''}
-	else{indicatorSentence = t('chooseIndicator')}
+    let themeOptions = [];
+    $: if($theme === 'zst'){
+        indicatorSentence = ''}
+    else{indicatorSentence = t('chooseIndicator')}
 
+    // console.log("indicatoroptions",indicatorOptionsCountry)
 
-    const optionsHeter = [{
-		value: 'Gemiddelde temperatuur',
-		label: 'Average temperature',
-	}, {
-		value: 'Gemiddelde temperatuur droog seizoen',
-		label: 'Average temperature dry season',
-	}, {
-		value: 'Gemiddelde temperatuur nat seizoen',
-		label: 'Average temperature wet season',
-	}]
+    const optionsHeter = [
+    "temperatureAvg",
+    "temperatureAvgDry",
+    "temperatureAvgWet",  
+    ]  
 
-    const optionsDroger = [{
-		value: 'Gemiddelde neerslag',
-		label: 'Average precipitation',
-	}, {
-		value: 'Gemiddelde neerslag droog seizoen',
-		label: 'Average precipitation dry season',
-	}, {
-		value: 'Gemiddelde neerslag nat seizoen',
-		label: 'Average precipitation wet season',
-	}]
+    const optionsDroger = [
+    "precipitationAvg",
+    "precipitationAvgDry",
+    "precipitationAvgWet",    
+]
 
-    const optionsWind = [{
-		value: 'Gemiddelde windsnelheid',
-		label: 'Average wind speed',
-	}, {
-		value: 'Gemiddelde windsnelheid droog seizoen',
-		label: 'Average wind speed dry season',
-	}, {
-		value: 'Gemiddelde windsnelheid nat seizoen',
-		label: 'Average wind speed wet season',
-	}]
+    const optionsWind = [
+    "windAvg",
+    "windAvgDry",
+    "windAvgWet"    
+    ]
    
+    // let themeOptions = []
+    // let themeOptions = optionsHeter
+    // $: if($theme === 'heter'){
+	// 	themeOptions = optionsHeter}
+	// else if($theme === 'droger'){
+	// 	themeOptions = optionsDroger}
+    // else if($theme === 'wind'){
+	// 	themeOptions = optionsWind}
+	// else{themeOptions = []}
 
-    let themeOptions = optionsHeter
-    $: if($theme === 'heter'){
-		themeOptions = optionsHeter}
-	else if($theme === 'droger'){
-		themeOptions = optionsDroger}
-    else if($theme === 'wind'){
-		themeOptions = optionsWind}
-	else{themeOptions = []}
-    
-    $: $theme === 'heter' ? ($datalaag = 'Gemiddelde temperatuur'):
-     $theme === 'wind' ? ($datalaag = 'Gemiddelde windsnelheid'):
-    ($datalaag = 'Gemiddelde neerslag');
+    // console.log("type",typeof($indicatorOptionsCountry))
+//     console.log(Array.isArray($indicatorOptionsCountry) ? $indicatorOptionsCountry.filter(indicatorOption => {
+//   return indicatorOption.theme === "heter"
+// }) : []);
+
+    $: {
+        // Filter options based on the current theme
+        const filteredOptions = $indicatorOptionsCountry.filter(option => option.theme === $theme);
+        themeOptions = filteredOptions;
+        console.log("Filtered themeOptions:", themeOptions);
+
+        // Set the default datalaag if any options are available
+        if (themeOptions.length) {
+            $datalaag = themeOptions[0];
+            console.log("Selected datalaag:", $datalaag);
+        } else {
+            $datalaag = null;
+        }
+    }
+
+    console.log("Current theme:", $theme);
 
 </script>
 
@@ -102,18 +107,19 @@
     </div>
     
     <h2>{indicatorSentence}</h2>
-    {#each themeOptions as { value, label }}
+    {#each themeOptions as option}
         <label class='keuzes'>
             <input
                 type="radio"
-                label = {label} 
+                label={option.indicator}
                 name="laag"
-                value={value}
-                bind:group={$datalaag}
+                value={option.indicator}
+                on:change={() => $datalaag = option}
             />
-            {value}
+            {option.textName}
         </label>
     {/each}
+    
 
     
     {#if $countrySelection}

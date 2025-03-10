@@ -20,8 +20,13 @@
   })
 
 
-  $: filteredData = dataCountry.filter(function(x) { return x.variabel === $datalaag})
-
+$: filteredData = dataCountry && dataCountry.length 
+  ? dataCountry.filter(x => x.variabel === $datalaag.column)
+  : [];
+// for (let i = 0; i < dataCountry.length; i++) {
+//   console.log(dataCountry[i].variabel)
+//   console.log(dataCountry.filter(x => x.variabel === dataCountry[i].variabel))
+// }
 
   const colorsMax = ['#E5CDC0', '#E5CDC0']
 

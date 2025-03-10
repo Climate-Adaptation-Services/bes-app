@@ -9,4 +9,13 @@ export const nederlands = {
     'chooseTheme': 'Kies een thema:',
     'chooseIndicator': 'Kies een onderwerp:',
     'chooseLocation': 'Kies een locatie:',
+    "temperatureAvg": "Gemiddelde temperatuur",
+    "temperatureAvgDry": "Gemiddelde temperatuur droog seizoen",
+    "temperatureAvgWet": "Gemiddelde temperatuur nat seizoen",
+    "precipitationAvg": "Gemiddelde neerslag",
+    "precipitationAvgDry": "Gemiddelde neerslag droog seizoen",
+    "precipitationAvgWet": "Gemiddelde neerslag nat seizoen",
+    "windAvg": "Gemiddelde windsnelheid",  
+    "windAvgDry": "Gemiddelde windsnelheid droog seizoen",
+    "windAvgWet": "Gemiddelde windsnelheid nat seizoen",
 }

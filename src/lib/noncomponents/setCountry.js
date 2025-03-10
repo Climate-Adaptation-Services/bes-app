@@ -1,4 +1,6 @@
-import { country,countrySelection } from "$lib/stores"
+import { country,countrySelection,indicatorOptionsCountry } from "$lib/stores"
+import {indicatorOptions} from "$lib/noncomponents/indicatorOptions" 
+import { get } from 'svelte/store';
 
 export function setCountry(country_iso){
     if(country_iso === 'bq'){

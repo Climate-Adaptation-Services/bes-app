@@ -4,23 +4,23 @@
 
   let variable
 	$:  $theme === 'zst' ? (variable = 'Sea level rise'):
-		$datalaag === 'Gemiddelde temperatuur' ? (variable = 'Gemiddelde temperatuur'):
-		$datalaag === 'Gemiddelde temperatuur droog seizoen' ? (variable = 'Gemiddelde temperatuur droge season'):
-		$datalaag === 'Gemiddelde temperatuur nat seizoen' ? (variable = 'Gemiddelde temperatuur natte season'):
-		$datalaag === 'Gemiddelde neerslag' ? (variable = 'Gemiddelde neerslag'):
-		$datalaag === 'Gemiddelde neerslag droog seizoen' ? (variable = 'Gemiddelde neerslag droge season'):
-		$datalaag === 'Gemiddelde neerslag nat seizoen' ? (variable = 'Gemiddelde neerslag natte season'):
-		$datalaag === 'Gemiddelde windsnelheid' ? (variable = 'Gemiddelde windsnelheid'):
-		$datalaag === 'Gemiddelde windsnelheid droog seizoen' ? (variable = 'Gemiddelde windsnelheid droge seizoen'):
-		$datalaag === 'Gemiddelde windsnelheid nat seizoen' ? (variable = 'Gemiddelde windsnelheid natte seizoen'):
-		(chartTitle = String($datalaag));
+		$datalaag.column === 'Gemiddelde temperatuur' ? (variable = 'Gemiddelde temperatuur'):
+		$datalaag.column === 'Gemiddelde temperatuur droog seizoen' ? (variable = 'Gemiddelde temperatuur droge season'):
+		$datalaag.column === 'Gemiddelde temperatuur nat seizoen' ? (variable = 'Gemiddelde temperatuur natte season'):
+		$datalaag.column === 'Gemiddelde neerslag' ? (variable = 'Gemiddelde neerslag'):
+		$datalaag.column === 'Gemiddelde neerslag droog seizoen' ? (variable = 'Gemiddelde neerslag droge season'):
+		$datalaag.column === 'Gemiddelde neerslag nat seizoen' ? (variable = 'Gemiddelde neerslag natte season'):
+		$datalaag.column === 'Gemiddelde windsnelheid' ? (variable = 'Gemiddelde windsnelheid'):
+		$datalaag.column === 'Gemiddelde windsnelheid droog seizoen' ? (variable = 'Gemiddelde windsnelheid droge seizoen'):
+		$datalaag.column === 'Gemiddelde windsnelheid nat seizoen' ? (variable = 'Gemiddelde windsnelheid natte seizoen'):
+		(variable = String($datalaag.column));
 
-	$:console.log($theme, '///')
-
+console.log($datalaag.column)
+console.log("variable",variable)
   let Tekst = '';
-  $: if(($datalaag === 'Gemiddelde windsnelheid' || $datalaag === 'Gemiddelde neerslag' || $datalaag === 'Gemiddelde temperatuur') && $theme !== 'zst') {
+  $: if($datalaag.season==='annual') {
 		Tekst = t('explanationAnnual', {
-      variable: variable.split(' ').slice(0, 2).join(' ').toLowerCase()
+      variable: $datalaag.column.split(' ').slice(0, 2).join(' ').toLowerCase()
     })
   	}
 
@@ -32,8 +32,8 @@
 
 	else if($theme !== 'zst' ){
 		Tekst = t('explanationSeason', {
-			variable: variable.split(' ').slice(0, 2).join(' ').toLowerCase(), 
-			season: variable.split(' ').slice(2,3).join(' '). toLowerCase()
+			variable: $datalaag.indicator, 
+			season: $datalaag.season
 		})
 	}
 		

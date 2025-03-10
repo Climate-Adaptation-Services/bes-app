@@ -1,5 +1,5 @@
 <script>
-	import { w, h, datalaag, country, theme } from "$lib/stores.js";
+	import { w, h, datalaag, country, theme, indicatorOptionsCountry } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
@@ -7,6 +7,7 @@
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
 	import { setCountry } from '$lib/noncomponents/setCountry.js'
 	import {setLanguage} from '$lib/noncomponents/setLanguage.js'
+  import { indicatorOptions } from "$lib/noncomponents/indicatorOptions.js";
 	
 	export let data;
 	setCountry(data.country_iso);
@@ -35,12 +36,11 @@
 	$: {
 		selectDataCountry($country);
 	}
+	$indicatorOptionsCountry = indicatorOptions[$country];
 
 	let chartTitle
 	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
-		(chartTitle = String($datalaag));
-		
-	$: console.log(dataCountry)
+		(chartTitle = String($datalaag.textName));
 </script>
 
 <div class='App'>
