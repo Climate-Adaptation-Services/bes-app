@@ -23,10 +23,6 @@
 $: filteredData = dataCountry && dataCountry.length 
   ? dataCountry.filter(x => x.variabel === $datalaag.column)
   : [];
-// for (let i = 0; i < dataCountry.length; i++) {
-//   console.log(dataCountry[i].variabel)
-//   console.log(dataCountry.filter(x => x.variabel === dataCountry[i].variabel))
-// }
 
   const colorsMax = ['#E5CDC0', '#E5CDC0']
 
@@ -63,22 +59,22 @@ $: filteredData = dataCountry && dataCountry.length
 
     $: console.log($country)
 
-
-  $: yDomain = $theme === 'heter' ? [20,33]:
+//this is really ugly! Can we make this better? do we need an object with country theme combinations?
+  $: yDomain = $theme === 'heat' ? [20,33]:
      $theme === 'wind' & $country === 'Bonaire' ? [6,9]:
      $theme === 'wind' & $country === 'Saba & St.Eustatius' ? [5,8]:
-     $theme === 'droger' & $country === 'Saba & St.Eustatius' ? [0,1100]:
+     $theme === 'drought' & $country === 'Saba & St.Eustatius' ? [0,1100]:
      $theme === 'wind' & $country === 'St. Martin' ? [5,8]:
-     $theme === 'droger' & $country === 'St. Martin' ? [0,1100]:
+     $theme === 'drought' & $country === 'St. Martin' ? [0,1100]:
     [0,600];
 
-  $: unit = $theme === 'heter' ? " °C":
+  $: unit = $theme === 'heat' ? " °C":
     $theme === 'wind' ? " m/s":
     " mm"; 
   
   
   function tickFormat(value){
-    if ($theme === 'droger') {return d3.format('.0f')(value)}
+    if ($theme === 'drought') {return d3.format('.0f')(value)}
     else {return d3.format('.1f')(value)}
   }
 

@@ -2,38 +2,22 @@
   import { theme, datalaag } from "$lib/stores.js";
   import { t } from '$lib/i18n/translate.js';
 
-  let variable
-	$:  $theme === 'zst' ? (variable = 'Sea level rise'):
-		$datalaag.column === 'Gemiddelde temperatuur' ? (variable = 'Gemiddelde temperatuur'):
-		$datalaag.column === 'Gemiddelde temperatuur droog seizoen' ? (variable = 'Gemiddelde temperatuur droge season'):
-		$datalaag.column === 'Gemiddelde temperatuur nat seizoen' ? (variable = 'Gemiddelde temperatuur natte season'):
-		$datalaag.column === 'Gemiddelde neerslag' ? (variable = 'Gemiddelde neerslag'):
-		$datalaag.column === 'Gemiddelde neerslag droog seizoen' ? (variable = 'Gemiddelde neerslag droge season'):
-		$datalaag.column === 'Gemiddelde neerslag nat seizoen' ? (variable = 'Gemiddelde neerslag natte season'):
-		$datalaag.column === 'Gemiddelde windsnelheid' ? (variable = 'Gemiddelde windsnelheid'):
-		$datalaag.column === 'Gemiddelde windsnelheid droog seizoen' ? (variable = 'Gemiddelde windsnelheid droge seizoen'):
-		$datalaag.column === 'Gemiddelde windsnelheid nat seizoen' ? (variable = 'Gemiddelde windsnelheid natte seizoen'):
-		(variable = String($datalaag.column));
-
-console.log($datalaag.column)
-console.log("variable",variable)
   let Tekst = '';
-  $: if($datalaag.season==='annual') {
-		Tekst = t('explanationAnnual', {
-      variable: $datalaag.column.split(' ').slice(0, 2).join(' ').toLowerCase()
-    })
-  	}
 
-
-	  
-	else if($theme === 'zst' ){
+	$: if($theme === 'slr' ){
 			Tekst = t('explanationSeaLevelRise')
 	}
 
-	else if($theme !== 'zst' ){
+	else if($datalaag.season==='annual') {
+		Tekst = t('explanationAnnual', {
+		variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase()
+	})
+	}
+
+	else {
 		Tekst = t('explanationSeason', {
-			variable: $datalaag.indicator, 
-			season: $datalaag.season
+			variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase(), 
+			season: t($datalaag.season)
 		})
 	}
 		

@@ -1,4 +1,3 @@
-import { text } from "d3";
 import { t } from '$lib/i18n/translate.js';
 
 export const indicatorOptions = {
@@ -6,103 +5,93 @@ export const indicatorOptions = {
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
-            theme: "heter",
+            theme: "heat",
             season: "annual",
-            textName: t("temperatureAvg"),
         },
         {
             indicator: "temperatureAvgDry",
             column: "Gemiddelde temperatuur droog seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "dry",
-            textName: t("temperatureAvgDry"),
         },
         {
             indicator: "temperatureAvgWet",
             column: "Gemiddelde temperatuur nat seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "wet",
-            textName: t("temperatureAvgWet"),
         },
         {
             indicator: "precipitationAvg",
             column: "Gemiddelde neerslag", 
-            theme: "droger",
+            theme: "drought",
             season: "annual",
-            textName: t("precipitationAvg"),
         },
         {
             indicator: "precipitationAvgDry",
             column: "Gemiddelde neerslag droog seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "dry",
-            textName: t("precipitationAvgDry"),
         },
         {
             indicator: "precipitationAvgWet",
             column: "Gemiddelde neerslag nat seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "wet",
-            textName: t("precipitationAvgWet"),
         },
         {
             indicator: "windAvg",
             column: "Gemiddelde windsnelheid",
             theme: "wind",
             season: "annual",
-            textName: t("windAvg"),
         },
         {
             indicator: "windAvgDry",
             column: "Gemiddelde windsnelheid droog seizoen",
             theme: "wind",
             season: "dry",
-            textName: t("windAvgDry"),
         },
         {
             indicator: "windAvgWet",
             column: "Gemiddelde windsnelheid nat seizoen",
             theme: "wind",
             season: "wet",
-            textName: t("windAvgWet"),
         }
-
     ],
     "Saba & St.Eustatius": [
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
-            theme: "heter",
+            theme: "heat",
             season: "annual",
         },
         {
             indicator: "temperatureAvgDry",
             column: "Gemiddelde temperatuur droog seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "dry",
         },
         {
             indicator: "temperatureAvgWet",
             column: "Gemiddelde temperatuur nat seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "wet",
         },
         {
             indicator: "precipitationAvg",
             column: "Gemiddelde neerslag", 
-            theme: "droger",
+            theme: "drought",
             season: "annual",
         },
         {
             indicator: "precipitationAvgDry",
             column: "Gemiddelde neerslag droog seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "dry",
         },
         {
             indicator: "precipitationAvgWet",
             column: "Gemiddelde neerslag nat seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "wet",
         },
         {
@@ -123,44 +112,42 @@ export const indicatorOptions = {
             theme: "wind",
             season: "wet",
         }
-
     ],
-    "St. Martin": 
-    [
+    "St. Martin": [
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
-            theme: "heter",
+            theme: "heat",
             season: "annual",
         },
         {
             indicator: "temperatureAvgDry",
             column: "Gemiddelde temperatuur droog seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "dry",
         },
         {
             indicator: "temperatureAvgWet",
             column: "Gemiddelde temperatuur nat seizoen",
-            theme: "heter",
+            theme: "heat",
             season: "wet",
         },
         {
             indicator: "precipitationAvg",
             column: "Gemiddelde neerslag", 
-            theme: "droger",
+            theme: "drought",
             season: "annual",
         },
         {
             indicator: "precipitationAvgDry",
             column: "Gemiddelde neerslag droog seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "dry",
         },
         {
             indicator: "precipitationAvgWet",
             column: "Gemiddelde neerslag nat seizoen",
-            theme: "droger",
+            theme: "drought",
             season: "wet",
         },
         {

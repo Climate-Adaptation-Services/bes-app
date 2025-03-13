@@ -1,5 +1,6 @@
 <script>
-	import { w, h, datalaag, country, theme, indicatorOptionsCountry } from "$lib/stores.js";
+	import { t } from "$lib/i18n/translate";
+	import { w, h, datalaag, country, theme, indicatorOptionsCountry, themeOptions } from "$lib/stores.js";
 	import Chart from "$lib/components/Chart.svelte"
  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
@@ -32,15 +33,19 @@
 			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
 		}
 	}
-
 	$: {
 		selectDataCountry($country);
+		$indicatorOptionsCountry = indicatorOptions[$country];
+		const filteredOptions = $indicatorOptionsCountry.filter(option => option.theme === $theme);
+        $themeOptions = filteredOptions;
+        console.log("Filtered themeOptions:", $themeOptions);
+        $datalaag = $themeOptions[0]
 	}
-	$indicatorOptionsCountry = indicatorOptions[$country];
+	
 
 	let chartTitle
-	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
-		(chartTitle = String($datalaag.textName));
+	$:  $theme === 'slr' ? (chartTitle = t('seaLevelRise')):
+		(chartTitle = t($datalaag.indicator));
 </script>
 
 <div class='App'>
@@ -49,11 +54,11 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' op ' + $country}</p>
+			<p class='chart-title'>{chartTitle + ' '+t("on")+' '+ $country}</p>
 			<p class='chart-subtitle'>{' '}</p>
 			{#if data && dataCountry}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
-					{#if $h > 0 && $theme === 'zst'}
+					{#if $h > 0 && $theme === 'slr'}
 							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} dataLLHI={dataSeaLevelProjectionLLHI} />
 					{:else}
 							<Chart {dataCountry}/>

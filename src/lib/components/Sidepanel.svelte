@@ -1,5 +1,5 @@
 <script>
-    import { datalaag, theme, country, countrySelection, indicatorOptionsCountry } from "$lib/stores.js";
+    import { datalaag, theme, country, countrySelection, themeOptions } from "$lib/stores.js";
     import { t } from '$lib/i18n/translate.js';
 
     function handleClickTheme(event) {
@@ -28,97 +28,54 @@
 	}
 
     let indicatorSentence = t('chooseIndicator');
-    let themeOptions = [];
-    $: if($theme === 'zst'){
+    $: if($theme === 'slr'){
         indicatorSentence = ''}
     else{indicatorSentence = t('chooseIndicator')}
 
-    // console.log("indicatoroptions",indicatorOptionsCountry)
-
-    const optionsHeter = [
-    "temperatureAvg",
-    "temperatureAvgDry",
-    "temperatureAvgWet",  
-    ]  
-
-    const optionsDroger = [
-    "precipitationAvg",
-    "precipitationAvgDry",
-    "precipitationAvgWet",    
-]
-
-    const optionsWind = [
-    "windAvg",
-    "windAvgDry",
-    "windAvgWet"    
-    ]
-   
-    // let themeOptions = []
-    // let themeOptions = optionsHeter
-    // $: if($theme === 'heter'){
-	// 	themeOptions = optionsHeter}
-	// else if($theme === 'droger'){
-	// 	themeOptions = optionsDroger}
-    // else if($theme === 'wind'){
-	// 	themeOptions = optionsWind}
-	// else{themeOptions = []}
-
-    // console.log("type",typeof($indicatorOptionsCountry))
-//     console.log(Array.isArray($indicatorOptionsCountry) ? $indicatorOptionsCountry.filter(indicatorOption => {
-//   return indicatorOption.theme === "heter"
-// }) : []);
-
-    $: {
-        // Filter options based on the current theme
-        const filteredOptions = $indicatorOptionsCountry.filter(option => option.theme === $theme);
-        themeOptions = filteredOptions;
-        console.log("Filtered themeOptions:", themeOptions);
-
-        // Set the default datalaag if any options are available
-        if (themeOptions.length) {
-            $datalaag = themeOptions[0];
-            console.log("Selected datalaag:", $datalaag);
-        } else {
-            $datalaag = null;
-        }
+    let selectedIndex=0;
+    $: if ($theme) {
+        selectedIndex = 0;
     }
 
     console.log("Current theme:", $theme);
-
+    console.log("themeOptions:", $themeOptions);
 </script>
 
 <section>
     <h2>{t('chooseTheme')}</h2>
     <div class="item">
-        <img class = 'themelogo heter active' id = 'heter' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
-        <p class="caption heter activecaption">Het wordt heter</p>
+        <img class = 'themelogo heat active' id = 'heat' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
+        <p class="caption heat activecaption">{t('titleheat')}</p>
     </div>
     <div class="item">
-        <img class = 'themelogo droger' id = 'droger' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droogte_carib.png" on:click={handleClickTheme}> 
-        <p class="caption droger">Het wordt droger</p>
+        <img class = 'themelogo drought' id = 'drought' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droogte_carib.png" on:click={handleClickTheme}> 
+        <p class="caption drought">{t('titledrought')}</p>
     </div>
     <div class="item">
         <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind_carib.png" on:click={handleClickTheme}> 
-        <p class="caption wind ">Er zal meer wind komen</p>
+        <p class="caption wind ">{t('titlewind')}</p>
     </div>
     <div class="item">
-        <img class = 'themelogo zst' id = 'zst' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst_carib.png" on:click={handleClickTheme}> 
-        <p class="caption zst">De zeespiegel stijgt</p>
+        <img class = 'themelogo slr' id = 'slr' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst_carib.png" on:click={handleClickTheme}> 
+        <p class="caption slr">{t('titleslr')}</p>
     </div>
     
     <h2>{indicatorSentence}</h2>
-    {#each themeOptions as option}
-        <label class='keuzes'>
-            <input
-                type="radio"
-                label={option.indicator}
-                name="laag"
-                value={option.indicator}
-                on:change={() => $datalaag = option}
-            />
-            {option.textName}
-        </label>
-    {/each}
+    {#each $themeOptions as option, i}
+    <label class="keuzes">
+      <input
+        type="radio"
+        name="laag"
+        value={option.indicator}
+        on:click={() => {
+          selectedIndex = i;
+          $datalaag = option;
+        }}
+        checked={i === selectedIndex}
+      />
+      {t(option.indicator)}
+    </label>
+  {/each}
     
 
     

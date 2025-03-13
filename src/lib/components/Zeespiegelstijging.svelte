@@ -1,5 +1,6 @@
 <script>
   import * as d3 from 'd3';
+  import { t } from '$lib/i18n/translate.js';
 
   import XAxis from './axes/XAxis.svelte';
   import YAxis from './axes/YAxis.svelte';
@@ -70,18 +71,18 @@
       'variableLow': 'ssp126_5pc',
       'variableHigh': 'ssp126_95pc',
       'color': colorGematigd,
-      'legendText': 'Beperkt',
+      'legendText': t('moderate'),
       'hachureAngle': '140',
-      'legendText2': 'Met beperkte',
+      'legendText2': t('withModerate'),
       'y_offset_text': ['48', '62']
     }, {
       'median':'ssp585_50pc',
       'variableLow': 'ssp585_5pc',
       'variableHigh': 'ssp585_95pc',
       'color': colorSterk,
-      'legendText': 'Sterk',
+      'legendText': t('strong'),
       'hachureAngle': '60',
-      'legendText2': 'Met sterke',
+      'legendText2': t('withStrong'),
       'y_offset_text': ['53', '67']
     }
   ]
@@ -94,7 +95,7 @@
 
   <XAxis scale={xScale} xTransform={0} yTransform={innerHeight} className="lineChart__xAxis" axis={xAxis}/>
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
-  <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>Stijging in cm</text>
+  <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>{t("riseInCm")}</text>
   
   <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
  
@@ -117,7 +118,7 @@
         class='legendText' 
         fill={median_line.color} 
         opacity={areaOpacity + 0.2}>
-        klimaatverandering
+        {t("climateChange")}
       </text>
     </g>
   {/each}
