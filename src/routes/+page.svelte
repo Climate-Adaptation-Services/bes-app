@@ -26,7 +26,7 @@
 			dataCountry = data.sabast_klimaatdata;
 			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
 			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
-		} else if (country === 'St. Maarten') {
+		} else if (country === 'St. Martin') {
 			dataCountry = data.stmaarten_klimaatdata;
 			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
 			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;

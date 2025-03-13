@@ -125,7 +125,7 @@ export const indicatorOptions = {
         }
 
     ],
-    "St. Maarten": 
+    "St. Martin": 
     [
         {
             indicator: "temperatureAvg",

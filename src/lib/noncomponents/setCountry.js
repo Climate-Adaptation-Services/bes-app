@@ -7,7 +7,7 @@ export function setCountry(country_iso){
         country.set('Bonaire')
         countrySelection.set(true)
     }else if(country_iso === 'sm'){
-        country.set('St. Maarten')
+        country.set('St. Martin')
         countrySelection.set(false)
     }else{
         country.set('Bonaire')
