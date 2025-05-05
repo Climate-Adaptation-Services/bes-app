@@ -11,7 +11,7 @@
   export let margin;
 
   import { annotation } from 'd3-svg-annotation';
-  import { w, country } from '$lib/stores';
+  import { w} from '$lib/stores';
   import { t } from '$lib/i18n/translate';
 
   const annotations = [
@@ -58,9 +58,6 @@
           }
         }));
   });
-
-
-
 </script>
 
 <g class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>

@@ -1,7 +1,8 @@
 <script>
   import * as d3 from "d3";
-  import { onMount, afterUpdate } from 'svelte'
-  import { theme, country } from "$lib/stores.js";
+  import {afterUpdate } from 'svelte'
+  import { theme, area_id } from "$lib/stores.js";
+  
   
   export let data
   export let colors
@@ -15,26 +16,26 @@
   export let yDomain
   export let className   
   export let tickFormat
-  
-  //this is really ugly! Can we make this better? do we need an object with country theme combinations?
-  $: markslabelposition = $country === 'Saba & St.Eustatius' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'Saba & St.Eustatius' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'Saba & St.Eustatius' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'Bonaire' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'St. Martin' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'St. Martin' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
-    $country === 'St. Martin' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
-    
+
+
+  // Use area_id and areaName for logic instead of $area
+  $: barOffset = $area_id === 'se' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'se' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'se' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'bq' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'sm' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'sm' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'sm' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
     (0.02*screenHeight);
 
-  $: markTextColor = $country === 'Saba & St.Eustatius' && $theme === 'wind' && className === 'mark_max' ? 'grey':
-     $country === 'Saba & St.Eustatius' && $theme === 'heat' && className === 'mark_max' ? 'grey':
-     $country === 'Saba & St.Eustatius' && $theme === 'drought' && className === 'mark_max' ? 'grey':
-     $country === 'Bonaire' && $theme === 'heat' && className === 'mark_max' ? 'grey':
-     $country === 'St. Martin' && $theme === 'wind' && className === 'mark_max' ? 'grey':
-     $country === 'St. Martin' && $theme === 'heat' && className === 'mark_max' ? 'grey':
-     $country === 'St. Martin' && $theme === 'drought' && className === 'mark_max' ? 'grey':
-    'white'; 
+  $: markTextColor = $area_id === 'se' && $theme === 'wind' && className === 'mark_max' ? 'grey':
+     $area_id === 'se' && $theme === 'heat' && className === 'mark_max' ? 'grey':
+     $area_id === 'se' && $theme === 'drought' && className === 'mark_max' ? 'grey':
+     $area_id === 'bq' && $theme === 'heat' && className === 'mark_max' ? 'grey':
+     $area_id === 'sm' && $theme === 'wind' && className === 'mark_max' ? 'grey':
+     $area_id === 'sm' && $theme === 'heat' && className === 'mark_max' ? 'grey':
+     $area_id === 'sm' && $theme === 'drought' && className === 'mark_max' ? 'grey':
+     'black';
 
   afterUpdate(() => {
       
@@ -76,7 +77,7 @@
             text-anchor='middle'
             x={(xScale(xValue(d)) + xScale.bandwidth()/2)}
             fill= {markTextColor}
-            y={yScale(yDomain[0])+markslabelposition}
+            y={yScale(yDomain[0])+barOffset}
             font-size = '2vh'
           >
             {tickFormat(yValue(d)) + unit}
@@ -86,4 +87,3 @@
 
   <style>
   </style>
-  

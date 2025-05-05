@@ -1,14 +1,14 @@
 <script>
-    import { datalaag, theme, country, countrySelection, themeOptions } from "$lib/stores.js";
+    import { datalaag, theme, area_id, areaSelection, themeOptions} from "$lib/stores.js";
     import { t } from '$lib/i18n/translate.js';
+    import { areas } from '$lib/noncomponents/areas.js';
+    import { goto } from '$app/navigation';
 
     function handleClickTheme(event) {
-		$theme = event.target.id 
-        console.log(event.target.id)
+        $theme = event.target.id 
         let selectedTheme = document.getElementsByClassName($theme)
         let prevTheme = document.querySelector('.active')
         let prevCaption= document.querySelector('.activecaption')
-        console.log(selectedTheme)
         if(prevTheme) {
             prevTheme.classList.remove('active');
             prevCaption.classList.remove('activecaption');
@@ -17,15 +17,13 @@
         selectedTheme[1].classList.add('activecaption');
     }
     
-    function handleClickCountry(event) {
-		$country = event.target.id    
-        let selectedCountry= document.getElementById($country)      
-        let prevCountry = document.querySelector('.activecountry')
-        if(prevCountry) {
-        prevCountry.classList.remove('activecountry');
-        }
-        selectedCountry.classList.add('activecountry');
-	}
+    function handleClickArea(event) {
+        $area_id = event.target.id;
+        // Update the URL query param to ?area_id=newAreaId, preserving other params
+        const params = new URLSearchParams(window.location.search);
+        params.set('area_id', $area_id);
+        goto(`${window.location.pathname}?${params.toString()}`);
+    }
 
     let indicatorSentence = t('chooseIndicator');
     $: if($theme === 'slr'){
@@ -36,6 +34,11 @@
     $: if ($theme) {
         selectedIndex = 0;
     }
+
+    // Compute a sorted list of area ids: current + switchableTo, alphabetically by name
+    $: visibleAreas = $area_id && areas[$area_id]
+        ? [$area_id, ...areas[$area_id].switchableTo].filter((v, i, arr) => arr.indexOf(v) === i).sort((a, b) => areas[a].name.localeCompare(areas[b].name))
+        : [];
 
     console.log("Current theme:", $theme);
     console.log("themeOptions:", $themeOptions);
@@ -77,30 +80,30 @@
     </label>
   {/each}
     
-
-    
-    {#if $countrySelection}
+    {#if $areaSelection}
         <h2 class='kieslocatie'>{t('chooseLocation')}</h2>
-        <img class='countrylogo bo activecountry' id='Bonaire' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/bonairenew.png" on:click={handleClickCountry}> 
-        <figcaption class='countrycaptionbo'>Bonaire</figcaption>
-        <img class='countrylogo se' id='Saba & St.Eustatius' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/saba_eus_gezelligbijelkaar.png" on:click={handleClickCountry}> 
-        <figcaption class='countrycaptionse'>Saba & St. Eustatius</figcaption>
+        <div class="country-row">
+            {#each visibleAreas as areaId (areaId)}
+                {#if areas[areaId]}
+                    <div class="country-item">
+                        <img class={'countrylogo ' + areaId + ($area_id === areaId ? ' activecountry' : '')} id={areaId} src={areas[areaId].logo} alt={areas[areaId].name} on:click={handleClickArea}>
+                        <figcaption class={'countrycaption ' + areaId + ($area_id === areaId ? ' activecaption' : '')}>{areas[areaId].name}</figcaption>
+                    </div>
+                {/if}
+            {/each}
+        </div>
     {/if}
 </section>
 
 <style>
-
     .keuzes{
         margin-top:1vh;
         font-size: 2vh;
     }
-    
     .caption{
         font-size:1.5vh;
         display: block;
-        
     }
-
     div.item {
         vertical-align: top;
         display: inline-block;
@@ -108,67 +111,78 @@
         width: 6vw;
         margin:0vw;
         margin-bottom: 3vh; 
-        }
-    
-    .kieslocatie{
-        position: absolute;
-        bottom: 33vh;
     }
-
+    .kieslocatie{
+        position: static;
+        margin-top: 6vh;
+        margin-bottom: 2vh;
+        font-size: 2.3vh;
+        text-align: left;
+        width: 100%;
+    }
     .themelogo{
         width:4vw;
-            
     }
-
-    .countrylogo{
-        margin-top:2vh;
-        position: absolute;
-        bottom: 19vh;
-        
+    .country-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 2vw;
+        margin-bottom: 2vh;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
-
-    .countrycaptionbo{
-        position: absolute;
-        bottom: 14vh;
-        left: 5vw;
-        text-align:center;
-        font-size: 2.3vh;
+    .country-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: none;
     }
-
-    .countrycaptionse{
-        position: absolute;
-        bottom: 14vh;
-        left:14vw;
-        font-size: 2.3vh;
-        text-align:center
+    .countrylogo {
+        width: 100%;
+        height: auto;
+        max-height: 14vh;
+        min-height: 7vh;
+        margin: 0 auto;
+        object-fit: contain;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
-
-
-    .bo{
-        height: 13vh;
-        left:4vw;
-    }
-
-    .se{
-        height: 13vh;
-        left: 14vw;
-    }
-
-    .themelogo:not(.active) {
-        opacity: 0.3;
-    }
-
-    .caption:not(.activecaption) {
-        opacity: 0;
-    }
-
     .countrylogo:not(.activecountry) {
         opacity: 0.3;
     }
-
+    .countrycaption {
+        font-size: 2.1vh;
+        text-align: center;
+        margin-top: 0.7vh;
+        color: #222;
+        background: none;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 1.2;
+        max-width: 100%;
+        overflow: visible;
+        text-overflow: initial;
+        white-space: normal;
+        padding: 0 0.5vw;
+        word-break: break-word;
+    }
+    .countrycaption.activecaption {
+        font-weight: bold;
+        color: #017676;
+    }
+    .themelogo:not(.active) {
+        opacity: 0.3;
+    }
+    .caption:not(.activecaption) {
+        opacity: 0;
+    }
     h2{
 	font-size: 2.3vh;
 }
-
 </style>
-  

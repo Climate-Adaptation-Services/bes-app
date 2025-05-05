@@ -9,7 +9,7 @@
   import Area from './Area.svelte'
   import ZeespiegelHover from './ZeespiegelHover.svelte';
 
-  import { w, h, country } from '$lib/stores';
+  import { w, h, area_id } from '$lib/stores';
 
   export let dataProjection;
   export let dataLLHI
@@ -97,7 +97,7 @@
   <YAxis xTransform={margin.left} yTransform={0} scale={yScale} className="lineChart__yAxis" axis={yAxis}/>
   <text text-anchor='middle' transform='translate(50, {yScale(70)}) rotate(-90)'>{t("riseInCm")}</text>
   
-  <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$country} {margin} />
+  <LLHI data={dataLLHI} color={'#5b5b5b'} variable={'sej_high'} legendText='LLHI' xScale={xScale} yScale={yScale} className={'llhi'+$area_id} {margin} />
  
   {#each median_lines as median_line}
     <g>
@@ -150,4 +150,3 @@
   }
 
 </style>
-

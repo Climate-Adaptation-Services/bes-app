@@ -1,51 +1,35 @@
 <script>
 	import { t } from "$lib/i18n/translate";
-	import { w, h, datalaag, country, theme, indicatorOptionsCountry, themeOptions } from "$lib/stores.js";
+	import { w, h, datalaag, theme, indicatorOptionsArea, themeOptions, area_id } from "$lib/stores.js";
+	import { areas } from '$lib/noncomponents/areas.js';
 	import Chart from "$lib/components/Chart.svelte"
  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
-	import { setCountry } from '$lib/noncomponents/setCountry.js'
+	import { setArea } from '$lib/noncomponents/setArea.js'
 	import {setLanguage} from '$lib/noncomponents/setLanguage.js'
-  import { indicatorOptions } from "$lib/noncomponents/indicatorOptions.js";
 	
 	export let data;
-	setCountry(data.country_iso);
-	setLanguage(data);
 
-	let dataCountry;
-	let dataSeaLevelProjection;
-	let dataSeaLevelProjectionLLHI;
-
-	function selectDataCountry(country) {
-		if (country === 'Bonaire') {
-			dataCountry = data.bonaire_klimaatdata;
-			dataSeaLevelProjection = data.zeespiegel_projectiedata_bonaire;
-			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_bonaire_llhi;
-		} else if (country === 'Saba & St.Eustatius') {
-			dataCountry = data.sabast_klimaatdata;
-			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
-			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
-		} else if (country === 'St. Martin') {
-			dataCountry = data.stmaarten_klimaatdata;
-			dataSeaLevelProjection = data.zeespiegel_projectiedata_saba;
-			dataSeaLevelProjectionLLHI = data.zeespiegel_projectiedata_saba_llhi;
-		}
-	}
 	$: {
-		selectDataCountry($country);
-		$indicatorOptionsCountry = indicatorOptions[$country];
-		const filteredOptions = $indicatorOptionsCountry.filter(option => option.theme === $theme);
+		setLanguage(data);
+		setArea(data.area_id);
+		$indicatorOptionsArea = areas[data.area_id].indicatorOptions;
+		const filteredOptions = $indicatorOptionsArea.filter(option => option.theme === $theme);
         $themeOptions = filteredOptions;
-        console.log("Filtered themeOptions:", $themeOptions);
         $datalaag = $themeOptions[0]
 	}
-	
+
+	$: selectedArea = $area_id || data.area_id;
+	$: climateData = data.areaData[selectedArea]?.climateData;
+	$: seaLevelData = data.areaData[selectedArea]?.seaLevelData;
+	$: llhiData = data.areaData[selectedArea]?.llhiData;
 
 	let chartTitle
 	$:  $theme === 'slr' ? (chartTitle = t('seaLevelRise')):
 		(chartTitle = t($datalaag.indicator));
+
 </script>
 
 <div class='App'>
@@ -54,20 +38,19 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' '+t("on")+' '+ $country}</p>
+			<p class='chart-title'>{chartTitle + ' '+t("on")+' '+ ((areas && selectedArea && areas[selectedArea] && areas[selectedArea].name) ? areas[selectedArea].name : selectedArea)}</p>
 			<p class='chart-subtitle'>{' '}</p>
-			{#if data && dataCountry}
+			{#if climateData}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
 					{#if $h > 0 && $theme === 'slr'}
-							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} dataLLHI={dataSeaLevelProjectionLLHI} />
+							<Zeespiegelstijging dataProjection={seaLevelData} dataLLHI={llhiData} />
 					{:else}
-							<Chart {dataCountry}/>
+							<Chart dataClimate={climateData}/>
 					{/if}
 				</div>
 			{/if}
 		</div>
 		<div class='explanation-container'>
-			<!-- <p class='explanation_title'>Toelichting</p> -->
 			<Explanation/>
 		</div>
 	</div>

@@ -7,14 +7,14 @@ export const datalaag = writable({indicator: "temperatureAvg", column: "Gemiddel
 
 export const theme = writable('heat')
 
-export const country = writable(null)
+export const area_id = writable(null)
 
-export const countrySelection = writable(null)
+export const areaSelection = writable(null)
 
 export const lang = writable(null)
 
 export const hoveredYear = writable(null)
 
-export const indicatorOptionsCountry = writable([])
+export const indicatorOptionsArea = writable([])
 
 export const themeOptions = writable([])

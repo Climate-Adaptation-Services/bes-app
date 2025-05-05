@@ -1,7 +1,7 @@
 import { t } from '$lib/i18n/translate.js';
 
 export const indicatorOptions = {
-    "Bonaire": [
+    "bq": [
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
@@ -57,7 +57,7 @@ export const indicatorOptions = {
             season: "wet",
         }
     ],
-    "Saba & St.Eustatius": [
+    "se": [
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
@@ -113,7 +113,7 @@ export const indicatorOptions = {
             season: "wet",
         }
     ],
-    "St. Martin": [
+    "sm": [
         {
             indicator: "temperatureAvg",
             column: "Gemiddelde temperatuur",
