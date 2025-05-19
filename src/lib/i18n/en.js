@@ -18,10 +18,7 @@ export const english = {
     "windAvg": "Average wind speed",  
     "windAvgDry": "Average wind speed dry season",
     "windAvgWet": "Average wind speed wet season", 
-    "titleheat": 'It is getting hotter',
-    "titledrought": 'It is getting drier',
-    "titlewind": 'There will be more wind',
-    "titleslr": 'The sea levels are rising',
+
     "dry": "dry",
     "wet": "wet",
     "on": "on",

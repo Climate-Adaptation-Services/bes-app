@@ -1,5 +1,5 @@
 <script>
-    import { datalaag, theme, area_id, areaSelection, themeOptions} from "$lib/stores.js";
+    import { datalaag, theme, area_id, areaSelection, themeOptions, lang } from "$lib/stores.js";
     import { t } from '$lib/i18n/translate.js';
     import { areas } from '$lib/noncomponents/areas.js';
     import { goto } from '$app/navigation';
@@ -48,19 +48,19 @@
     <h2>{t('chooseTheme')}</h2>
     <div class="item">
         <img class = 'themelogo heat active' id = 'heat' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/hitte_carib.png" on:click={handleClickTheme}>
-        <p class="caption heat activecaption">{t('titleheat')}</p>
+        <p class="caption heat activecaption">{areas[$area_id]?.titles?.[$lang]?.heat || ''}</p>
     </div>
     <div class="item">
         <img class = 'themelogo drought' id = 'drought' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/droogte_carib.png" on:click={handleClickTheme}> 
-        <p class="caption drought">{t('titledrought')}</p>
+        <p class="caption drought">{areas[$area_id]?.titles?.[$lang]?.drought || ''}</p>
     </div>
     <div class="item">
         <img class = 'themelogo wind' id = 'wind' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/wind_carib.png" on:click={handleClickTheme}> 
-        <p class="caption wind ">{t('titlewind')}</p>
+        <p class="caption wind">{areas[$area_id]?.titles?.[$lang]?.wind || ''}</p>
     </div>
     <div class="item">
         <img class = 'themelogo slr' id = 'slr' src="https://raw.githubusercontent.com/sophievanderhorst/data/main/zst_carib.png" on:click={handleClickTheme}> 
-        <p class="caption slr">{t('titleslr')}</p>
+        <p class="caption slr">{areas[$area_id]?.titles?.[$lang]?.slr || ''}</p>
     </div>
     
     <h2>{indicatorSentence}</h2>
