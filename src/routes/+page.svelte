@@ -77,8 +77,10 @@
 		flex:1;
 		flex-direction:column;
 		padding-left:2vw;
+		padding-right:2vw;
 		padding-top:10vh;
-		width:20%;
+		width:25%;
+		max-width: 25%;
 	}
 
 	.main_panel{

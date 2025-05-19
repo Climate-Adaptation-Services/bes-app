@@ -1,26 +1,33 @@
 <script>
-  import { theme, datalaag } from "$lib/stores.js";
+  import { theme, datalaag, area_id } from "$lib/stores.js";
   import { t } from '$lib/i18n/translate.js';
+  import { areas} from "$lib/noncomponents/areas";
+  import { lang } from '$lib/stores';
 
   let Tekst = '';
 
+  // Helper for template interpolation
+  function interpolate(template, vars) {
+    return template?.replace(/{(\w+)}/g, (_, k) => vars[k] ?? '');
+  }
+
 	$: if($theme === 'slr' ){
-			Tekst = t('explanationSeaLevelRise')
+			Tekst = interpolate(areas[$area_id]?.explanation?.[$lang]?.sealevelrise)
 	}
 
 	else if($datalaag.season==='annual') {
-		Tekst = t('explanationAnnual', {
-		variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase()
-	})
+		Tekst = interpolate(areas[$area_id]?.explanation?.[$lang]?.annual, {variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase()})
 	}
 
 	else {
-		Tekst = t('explanationSeason', {
-			variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase(), 
-			season: t($datalaag.season)
-		})
-	}
 		
+		Tekst = interpolate(areas[$area_id]?.explanation?.[$lang]?.seasonal, {variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase(), 
+	season: t($datalaag.season)})
+		// Tekst = t('explanationSeason', {
+		// 	variable: t($datalaag.indicator).split(' ').slice(0,2).join(' ').toLowerCase(), 
+		// 	season: t($datalaag.season)
+		// })
+	}
 	
 
 </script>
