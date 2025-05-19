@@ -83,7 +83,7 @@ export const areas = {
     indicatorOptions: indicatorOptions['sm'],
     switchableTo: [],
     dataUrls: {
-      climate: 'https://raw.githubusercontent.com/Climate-Adaptation-Services/data/refs/heads/main/climatestatistics/stmaarten_climatestatistics.csv',
+      climate: 'https://stmaartenclimatestatistics.s3.eu-north-1.amazonaws.com/future_stats.csv',
       seaLevel: 'https://gist.githubusercontent.com/stichtingcas/86d27026230225096cc431697d0b0d94/raw/2d0a7a404447ce130f2d231cd3f7da1df38a65c0/saba-zeespiegelstijging.csv', // Please check if this is correct
       llhi: 'https://gist.githubusercontent.com/stichtingcas/01a920f71325b35fc193d48f19dd065e/raw/baef6c01aa777844fad66c596eebee5ae37eb88f/llhi-saba.csv' // Please check if this is correct
     },
