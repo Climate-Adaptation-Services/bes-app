@@ -23,6 +23,7 @@
     $area_id === 'se' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
     $area_id === 'se' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
     $area_id === 'bq' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
+    $area_id === 'bq' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
     $area_id === 'sm' && $theme === 'wind' && className === 'mark_max' ? (-0.01*screenHeight):
     $area_id === 'sm' && $theme === 'heat' && className === 'mark_max' ? (-0.01*screenHeight):
     $area_id === 'sm' && $theme === 'drought' && className === 'mark_max' ? (-0.01*screenHeight):
@@ -32,6 +33,7 @@
      $area_id === 'se' && $theme === 'heat' && className === 'mark_max' ? 'grey':
      $area_id === 'se' && $theme === 'drought' && className === 'mark_max' ? 'grey':
      $area_id === 'bq' && $theme === 'heat' && className === 'mark_max' ? 'grey':
+     $area_id === 'bq' && $theme === 'wind' && className === 'mark_max' ? 'grey':
      $area_id === 'sm' && $theme === 'wind' && className === 'mark_max' ? 'grey':
      $area_id === 'sm' && $theme === 'heat' && className === 'mark_max' ? 'grey':
      $area_id === 'sm' && $theme === 'drought' && className === 'mark_max' ? 'grey':

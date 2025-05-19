@@ -28,47 +28,47 @@ $: filteredData = dataClimate && dataClimate.length
   let maxData
   let minData
 
+  function tickFormat(value){
+    if ($theme === 'drought') {return d3.format('.0f')(value)}
+    else {return d3.format('.1f')(value)}
+  }
+
   $: maxData = [
       {
         scenario:'2050',
-        data: filteredData[0]?.['2050_max']
+        data: tickFormat(filteredData[0]?.['2050_max'])
       },
       {
         scenario:'2100',
-        data: filteredData[0]?.['2100_max']
+        data: tickFormat(filteredData[0]?.['2100_max'])
     }]
 
   $: minData = [
     {
         scenario: t('scenarioCurrent'),
-        data: filteredData[0]?.['huidig']
+        data: tickFormat(filteredData[0]?.['huidig'])
       },
     {
       scenario:'2050',
-      data: filteredData[0]?.['2050_min']
+      data: tickFormat(filteredData[0]?.['2050_min'])
     },
     {
       scenario:'2100',
-      data: filteredData[0]?.['2100_min']
+      data: tickFormat(filteredData[0]?.['2100_min'])
     }]
 
 //this is really ugly! Can we make this better? do we need an object with area theme combinations?
   $: yDomain = $theme === 'heat' ? [20,33]:
-     $theme === 'wind' && $area_id === 'bq' ? [6,9]:
+     $theme === 'wind' && $area_id === 'bq' ? [6,10]:
      $theme === 'wind' && $area_id === 'se' ? [5,8]:
      $theme === 'drought' && $area_id === 'se' ? [0,1100]:
-     $theme === 'wind' && $area_id === 'sm' ? [5,8]:
+     $theme === 'wind' && $area_id === 'sm' ? [2,5]:
      $theme === 'drought' && $area_id === 'sm' ? [0,1100]:
     [0,600];
 
   $: unit = $theme === 'heat' ? " °C":
     $theme === 'wind' ? " m/s":
     " mm"; 
-  
-  function tickFormat(value){
-    if ($theme === 'drought') {return d3.format('.0f')(value)}
-    else {return d3.format('.1f')(value)}
-  }
 
   $: xValue = d => d['scenario']
   $: yValue = d => d['data'] 
