@@ -1,32 +1,35 @@
 <script>
-	import { w, h, datalaag, country, theme } from "$lib/stores.js";
+	import { t } from "$lib/i18n/translate";
+	import { w, h, datalaag, theme, indicatorOptionsArea, themeOptions, area_id } from "$lib/stores.js";
+	import { areas } from '$lib/noncomponents/areas.js';
 	import Chart from "$lib/components/Chart.svelte"
  	import Sidepanel from "$lib/components/Sidepanel.svelte"
 	import Explanation from "$lib/components/Explanation.svelte"
 
 	import Zeespiegelstijging from "$lib/components/Zeespiegelstijging.svelte";
+	import { setArea } from '$lib/noncomponents/setArea.js'
+	import {setLanguage} from '$lib/noncomponents/setLanguage.js'
 	
-	export let data
+	export let data;
 
-	let dataCountry;
-	$: $country === 'Bonaire' 
-		? (dataCountry = data.bonaire_klimaatdata)
-		: (dataCountry = data.sabast_klimaatdata);
+	$: {
+		setLanguage(data);
+		setArea(data.area_id);
+		$indicatorOptionsArea = areas[data.area_id].indicatorOptions;
+		const filteredOptions = $indicatorOptionsArea.filter(option => option.theme === $theme);
+        $themeOptions = filteredOptions;
+        $datalaag = $themeOptions[0]
+	}
 
-	$: dataSeaLevelProjection = ($country === 'Bonaire')
-    ? data.zeespiegel_projectiedata_bonaire
-    : data.zeespiegel_projectiedata_saba
-
-	$: dataSeaLevelProjectionLLHI = ($country === 'Bonaire')
-    ? data.zeespiegel_projectiedata_bonaire_llhi
-    : data.zeespiegel_projectiedata_saba_llhi
-
+	$: selectedArea = $area_id || data.area_id;
+	$: climateData = data.areaData[selectedArea]?.climateData;
+	$: seaLevelData = data.areaData[selectedArea]?.seaLevelData;
+	$: llhiData = data.areaData[selectedArea]?.llhiData;
 
 	let chartTitle
-	$:  $theme === 'zst' ? (chartTitle = 'Zeespiegelstijging'):
-		(chartTitle = String($datalaag));
-		
-	$: console.log(dataCountry)
+	$:  $theme === 'slr' ? (chartTitle = t('seaLevelRise')):
+		(chartTitle = t($datalaag.indicator));
+
 </script>
 
 <div class='App'>
@@ -35,20 +38,19 @@
 	</div>
 	<div class='main_panel'>
 		<div class='chart-container'>
-			<p class='chart-title'>{chartTitle + ' op ' + $country}</p>
+			<p class='chart-title'>{chartTitle + ' '+t("on")+' '+ ((areas && selectedArea && areas[selectedArea] && areas[selectedArea].name) ? areas[selectedArea].name : selectedArea)}</p>
 			<p class='chart-subtitle'>{' '}</p>
-			{#if data && dataCountry}
+			{#if climateData}
 				<div class='chart' bind:clientWidth={$w} bind:clientHeight={$h}>
-					{#if $h > 0 && $theme === 'zst'}
-							<Zeespiegelstijging dataProjection={dataSeaLevelProjection} dataLLHI={dataSeaLevelProjectionLLHI} />
+					{#if $h > 0 && $theme === 'slr'}
+							<Zeespiegelstijging dataProjection={seaLevelData} dataLLHI={llhiData} />
 					{:else}
-							<Chart {dataCountry}/>
+							<Chart dataClimate={climateData}/>
 					{/if}
 				</div>
 			{/if}
 		</div>
 		<div class='explanation-container'>
-			<!-- <p class='explanation_title'>Toelichting</p> -->
 			<Explanation/>
 		</div>
 	</div>
@@ -75,8 +77,10 @@
 		flex:1;
 		flex-direction:column;
 		padding-left:2vw;
+		padding-right:2vw;
 		padding-top:10vh;
-		width:20%;
+		width:25%;
+		max-width: 25%;
 	}
 
 	.main_panel{

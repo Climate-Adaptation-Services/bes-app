@@ -11,6 +11,7 @@
   export let margin
 
   import { hoveredYear } from '$lib/stores';
+  import { t } from '$lib/i18n/translate';
 
   const hoverBarWidth = xScale(dataProjection[1].year) - xScale(dataProjection[0].year);
 
@@ -38,13 +39,13 @@
         y='30'
         class='legendYear'
         font-size='14'
-      >Mediaan</text>
+      >{t("median")}</text>
       <text
         x='135'
         y='30'
         class='legendYear'
         font-size='14'
-      >Bandbreedte</text>
+      >{t("range")}</text>
 
       <!-- {/* Value ranges */} -->
       {#each linesData as d, i}
@@ -137,8 +138,8 @@
   {:else}
     <g transform={`translate(${margin.left+120},${margin.top+40})`}>
       <text font-style='italic' text-anchor='middle' fill='#808080'>
-        <tspan>Beweeg over de grafiek om</tspan>
-        <tspan x=0 y='1em'>meer details te zien</tspan>
+        <tspan>{t("slrHover1")}</tspan>
+        <tspan x=0 y='1em'>{t("slrHover2")}</tspan>
       </text>
       
     </g>

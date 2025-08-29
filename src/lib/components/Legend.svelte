@@ -3,6 +3,7 @@
     export let screenHeight
     export let screenWidth
     export let xValue
+    import { t } from '$lib/i18n/translate.js';
     </script>
   
     <g class='legend' transform={`translate(${0.45*screenWidth}, ${0*screenHeight})`}>
@@ -12,26 +13,28 @@
             class="legendlabel"
             font-size = '2.2vh'
         >
-            {'Legenda'}
+            {t('legendTitle')}
         </text>
-        {#each ['Hoog' , 'Laag', 'Huidig' ] as d,i}
+        {#each [t('scenarioHigh'),t('scenarioLow'),t('scenarioCurrent') ] as d,i}
         <rect
             class={'legend' + 'rect'}
             transform = {`translate (${0}, ${i*0.034*screenHeight})`}
             key={xValue(d)}
-            width={0.05*screenWidth}
+            width={0.06*screenWidth}
             height = {0.03*screenHeight}
             fill={colorsLegend[i]}
         />
         <text
-            transform = {`translate (${0.025*screenWidth}, ${(i*0.034*screenHeight) + (0.02*screenHeight)})`}
+            x={0.03*screenWidth}
+            y={(i*0.034*screenHeight) + (0.015*screenHeight)}
             class="legendtext"
-            text-anchor= 'middle'
-            fill = 'white'
-            font-size = '2vh'
+            text-anchor="middle"
+            dominant-baseline="middle"
+            fill="white"
+            font-size="2vh"
         >
-        {d}
-            </text>
+            {d}
+        </text>
         {/each}
     </g>
   

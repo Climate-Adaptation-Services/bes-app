@@ -11,13 +11,13 @@
   export let margin;
 
   import { annotation } from 'd3-svg-annotation';
-  import { w, country } from '$lib/stores';
+  import { w} from '$lib/stores';
+  import { t } from '$lib/i18n/translate';
 
   const annotations = [
     {
       note: {
-        label: "Scenario voor hoogst mogelijke zeespiegelstijging",
-        // title: "Annotation title"
+        label: t('slrScenarioHighest'),
       },
       data: {'year': 2059, variable:'120.26'},
       dy: -20,
@@ -58,9 +58,6 @@
           }
         }));
   });
-
-
-
 </script>
 
 <g class={className.replaceAll(' ', '').replaceAll('&', '').replaceAll('.', '') + 'g'} text-anchor='start' font-size='{8 + $w*0.007}px'>
